@@ -1,0 +1,14 @@
+film "Social preview" 6s
+stage width=1280 ground=630 scale=51
+actor Gramps = skin gramps at 612
+actor Tot = skin tot at 840
+actor Baker = skin baker at 898 facing left
+actor Vera = skin vera at 1002
+actor Titan = skin titan at 1262 facing left
+
+0.2  Baker: mood(happy)
+0.2  Tot: mood(happy)
+0.5  Tot: hug(with=Baker, speed=1.2)
+0.5  Gramps: bow()
+0.5  Vera: wave()
+0.8  Titan: jump(to=1262)

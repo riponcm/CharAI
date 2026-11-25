@@ -1,9 +1,23 @@
-<!doctype html><meta charset="utf-8"><style>
-html,body{margin:0;width:1280px;height:640px;background:#fbf8f3;color:#2a2420;font-family:system-ui,Segoe UI,sans-serif;overflow:hidden}
-h1{position:absolute;left:64px;top:150px;margin:0;font-size:120px;line-height:1}
-p{position:absolute;left:68px;top:290px;width:520px;margin:0;font-size:32px;line-height:1.3;color:#6a5f56}
-.panel{position:absolute;left:640px;top:130px;width:600px;height:376px;border-radius:16px;background:#0b0b10 url(../cast-sheet.png) -27px -76px/3097px 1328px no-repeat}
+<!doctype html><!-- Rebuild: node docs/img/src/social-build.cjs (draws films/social, then shoots this page at 2x and downsizes to 1280x640) -->
+<meta charset="utf-8"><title>CharAI social preview</title><style>
+html,body{margin:0;width:1280px;height:640px;overflow:hidden;background:#f7f4ee;color:#1f1b16;font-family:system-ui,"Segoe UI",Helvetica,Arial,sans-serif}
+.floor{position:absolute;left:0;right:0;top:560px;bottom:0;background:#efe9df}
+.line{position:absolute;left:0;right:0;top:559px;height:2px;background:#1f1b16}
+.cast{position:absolute;left:0;top:0;width:1280px;height:640px}
+.bar{position:absolute;left:64px;top:64px;width:40px;height:4px;border-radius:2px;background:#c2410c}
+h1{position:absolute;left:60px;top:78px;margin:0;font-size:112px;line-height:1.1;font-weight:600;letter-spacing:-2.5px}
+.tag{position:absolute;left:64px;top:212px;width:560px;margin:0;font-size:30px;line-height:1.28;color:#5e554a}
+.sub{position:absolute;left:64px;top:300px;margin:0;font-size:17px;color:#7b7266;white-space:nowrap}
+.code{position:absolute;left:64px;top:348px;box-sizing:border-box;width:500px;padding:18px 22px;border-radius:14px;background:#fdfbf7;border:1px solid rgba(31,27,22,.08);font:17px/28px ui-monospace,"Cascadia Code",Consolas,monospace;color:#1f1b16;white-space:pre}
+.code .t{color:#7b7266}.code .a{font-weight:600}.code .s{color:#5e554a}
 </style>
-<h1>CharAI</h1><p>Draw any person as data. Direct them with a script. 2D character animation engine and agent skill.</p>
-<div class="panel"></div>
+<div class="floor"></div><div class="line"></div>
+<div class="bar"></div><h1>CharAI</h1>
+<p class="tag">Draw any person as data.<br>Direct them with a script.</p>
+<p class="sub">2D character animation engine · agent skill · open source</p>
+<div class="code"><span class="t">0.0</span>  <span class="a">Baker</span>: walk(to=500)
+<span class="t">2.5</span>  <span class="a">Baker</span>: wave()
+<span class="t">3.4</span>  <span class="a">Baker</span>: say(<span class="s">"Hello, little one!"</span>, for=1.6)
+<span class="t">5.0</span>  <span class="a">Baker</span>: hug(with=Tot)</div>
+<img class="cast" src="../../../films/social/cast@2x.png">
 <script>window.seek=function(){}</script>
