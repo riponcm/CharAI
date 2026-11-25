@@ -15,24 +15,50 @@
 @media (prefers-color-scheme:dark){:root{--bg:#1c1816;--fg:#f0e8df;--mut:#b5a99d;--card:#26211e;--line:#3a332e;--acc:#f0a070}}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
 main{max-width:860px;margin:0 auto;padding:0 16px 48px}a{color:var(--acc)}
-header img{width:100%;height:auto;display:block;margin-top:16px;border-radius:8px}
+header img,.card img{width:100%;height:auto;display:block;margin-top:16px;border-radius:8px}
 h1{font-size:1.9rem;line-height:1.2;margin:.8em 0 .3em}h2{font-size:1.3rem;margin:1.8em 0 .5em}
 code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:0 .3em;font-size:.9em}
 nav{display:flex;flex-wrap:wrap;gap:8px 16px;margin:1em 0}nav a{font-weight:600}
 .clips{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.clips img{width:100%;height:auto;border-radius:6px;display:block}
 ul{padding-left:1.2em}details{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5em 1em;margin:.5em 0}summary{cursor:pointer;font-weight:600}
 .tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.92rem}th,td{border:1px solid var(--line);padding:.4em .6em;text-align:left;vertical-align:top}thead th{background:var(--card)}
-footer{color:var(--mut);font-size:.9rem;margin-top:2em}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}.feat picture,.contrib picture{display:block}.card img{border-radius:6px}.contrib img{width:100%;height:auto;border-radius:8px;display:block}ol{padding-left:1.3em}pre{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:.6em .8em;overflow-x:auto;font-size:.88rem}pre code{border:0;padding:0}footer{color:var(--mut);font-size:.9rem;margin-top:2em}
 </style></head><body><main>
-<header><img src="docs/img/header.svg" alt="CharAI: draw any person as data, direct them with a script." width="1280" height="360">
+<header><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/header-dark.webp"><img src="docs/img/header-light.webp" alt="CharAI: draw any person as data, direct them with a script." width="1280" height="360"></picture>
 <h1>CharAI: 2D character animation engine and AI agent skill</h1></header>
 <p>CharAI is an open-source 2D character animation engine and agent skill. An AI agent (or a person) draws any human as a small data file and directs it with a short <code>.char</code> script; the engine supplies skeleton, motion, physics, moods, lip sync and speech, two-character contact and props. Characters only: the host supplies the scenery. Side view only in this release.</p>
-<nav><a href="https://github.com/riponcm/CharAI/">GitHub</a><a href="gallery/index.html">Gallery</a><a href="https://github.com/riponcm/CharAI/blob/main/SKILL.md">Agent skill</a><a href="https://github.com/riponcm/CharAI/blob/main/docs/EVIDENCE.md">Evidence</a><a href="https://github.com/riponcm/CharAI/blob/main/docs/KNOWN-ISSUES.md">Known issues</a><a href="https://github.com/riponcm/CharAI/blob/main/llms.txt">llms.txt</a></nav>
+<nav><a href="#start">Get started</a><a href="https://github.com/riponcm/CharAI/">GitHub</a><a href="gallery/index.html">Gallery</a><a href="https://github.com/riponcm/CharAI/blob/main/SKILL.md">Agent skill</a><a href="https://github.com/riponcm/CharAI/blob/main/docs/EVIDENCE.md">Evidence</a><a href="https://github.com/riponcm/CharAI/blob/main/docs/KNOWN-ISSUES.md">Known issues</a><a href="https://github.com/riponcm/CharAI/blob/main/llms.txt">llms.txt</a><a href="#contribute">Contribute</a></nav>
 <div class="clips">
-<a href="media/cast-lineup.mp4"><img src="media/cast-lineup.gif" alt="Six people in a line-up" loading="lazy"></a>
-<a href="media/toddler-and-captain.mp4"><img src="media/toddler-and-captain.gif" alt="A toddler and a captain" loading="lazy"></a>
-<a href="media/together.mp4"><img src="media/together.gif" alt="A hug, a handover, a scuffle" loading="lazy"></a>
+<a href="media/cast-lineup.mp4"><img src="media/cast-lineup.webp" alt="Six people in a line-up" loading="lazy"></a>
+<a href="media/toddler-and-captain.mp4"><img src="media/toddler-and-captain.webp" alt="A toddler and a captain" loading="lazy"></a>
+<a href="media/together.mp4"><img src="media/together.webp" alt="A hug, a handover, a scuffle" loading="lazy"></a>
+<a href="media/talk-voice.mp4"><img src="media/talk-voice.webp" alt="A voiced talking scene" loading="lazy"></a>
+<a href="media/gallery-moods.mp4"><img src="media/gallery-moods.webp" alt="One walk in four moods" loading="lazy"></a>
+<a href="media/gallery-actions.mp4"><img src="media/gallery-actions.webp" alt="Ten actions on three bodies" loading="lazy"></a>
 </div>
+<div class="feat card">
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/feature-any-body-from-numbers-dark.webp"><img src="docs/img/feature-any-body-from-numbers-light.webp" alt="Any body from numbers: six very different bodies jump for joy" loading="lazy"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/feature-physics-that-settles-dark.webp"><img src="docs/img/feature-physics-that-settles-light.webp" alt="Physics that settles: hair and scarf swing and settle after a stop" loading="lazy"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/feature-moods-change-the-walk-dark.webp"><img src="docs/img/feature-moods-change-the-walk-light.webp" alt="Moods change the walk: happy, sad and angry" loading="lazy"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/feature-speech-and-lip-sync-dark.webp"><img src="docs/img/feature-speech-and-lip-sync-light.webp" alt="Speech and lip sync: a close-up of a baker talking" loading="lazy"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/feature-characters-that-touch-dark.webp"><img src="docs/img/feature-characters-that-touch-light.webp" alt="Characters that touch: a hug" loading="lazy"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/feature-one-line-of-script-dark.webp"><img src="docs/img/feature-one-line-of-script-light.webp" alt="One line of script: the line is typed while the character does it" loading="lazy"></picture>
+</div>
+<h2 id="start">Get started in three steps</h2>
+<p>Needs Node 18 or newer. For pictures and video also Chrome or Edge, and ffmpeg for MP4.</p>
+<p><strong>With Claude Code (the skill).</strong> Only Claude models have been tried.</p>
+<ol>
+<li><code>git clone https://github.com/riponcm/CharAI .claude/skills/charai</code></li>
+<li><code>cd .claude/skills/charai &amp;&amp; npm install</code></li>
+<li>Ask Claude Code: &ldquo;Use CharAI to draw a character, a tall grandmother with a silver bun and a green cardigan, and show me her cast sheet.&rdquo;</li>
+</ol>
+<p><strong>By yourself, with the engine.</strong></p>
+<ol>
+<li><code>git clone https://github.com/riponcm/CharAI &amp;&amp; cd CharAI &amp;&amp; npm install</code></li>
+<li><code>node tools/check.cjs examples/hello.char</code></li>
+<li><code>node tools/render.cjs examples/hello.char hello.mp4</code> and watch eight seconds of a girl walking in and waving.</li>
+</ol>
+<p>Your own page, a video editor, making a character, and what to do when a step fails: <a href="https://github.com/riponcm/CharAI/blob/main/docs/GETTING-STARTED.md">Getting started</a>.</p>
 <h2>With and without CharAI</h2>
 <p>"Without" means an agent hand-codes each film; the measured baseline is the Lemo-Opuscar style-library workflow.</p>
 <div class="tw"><table><thead><tr><th></th><th>Without CharAI</th><th>With CharAI</th></tr></thead><tbody>
@@ -56,7 +82,9 @@ footer{color:var(--mut);font-size:.9rem;margin-top:2em}
 </ul>
 <h2>Documents</h2>
 <ul>
+<li><a href="https://github.com/riponcm/CharAI/blob/main/docs/GETTING-STARTED.md">docs/GETTING-STARTED.md</a></li>
 <li><a href="https://github.com/riponcm/CharAI/blob/main/SKILL.md">SKILL.md</a></li>
+<li><a href="https://github.com/riponcm/CharAI/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a></li>
 <li><a href="https://github.com/riponcm/CharAI/blob/main/docs/CHARACTER.md">docs/CHARACTER.md</a></li>
 <li><a href="https://github.com/riponcm/CharAI/blob/main/docs/AUTHORING.md">docs/AUTHORING.md</a></li>
 <li><a href="https://github.com/riponcm/CharAI/blob/main/docs/ACTIONS.md">docs/ACTIONS.md</a></li>
@@ -77,5 +105,8 @@ footer{color:var(--mut);font-size:.9rem;margin-top:2em}
 <details><summary>Does it need an artist or motion capture?</summary><p>No. The agent writes a skin as numbers plus a few SVG paths, and motion comes from the engine's actions, which are a few key poses each. There is no library of ready-made characters; a few worked examples are in <code>skins/</code>.</p></details>
 <details><summary>What licence is it under?</summary><p>Apache License 2.0; see <code>LICENSE</code> and <code>NOTICE</code>. It has no runtime dependencies.</p></details>
 <details><summary>How do I add a new action?</summary><p>Write a small file of key poses in body terms, register it in <code>CharActions</code>, and check it with <code>node tools/actioncheck.cjs actions/x.js</code>. See it with <code>node tools/action.cjs x out.png</code>. The format is in <code>docs/ACTIONS.md</code>.</p></details>
+<h2 id="contribute">Contribute</h2>
+<p>Draw a character, add an action, write an example film, fix a known issue, or try a host. Start with <a href="https://github.com/riponcm/CharAI/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>; share what you make in <a href="https://github.com/riponcm/CharAI/discussions">Discussions</a>.</p>
+<p class="contrib"><a href="https://github.com/riponcm/CharAI/blob/main/CONTRIBUTING.md"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/contribute-dark.webp"><img src="docs/img/contribute-light.webp" alt="Make CharAI better: draw a character, add an action, write an example film, fix a known issue" loading="lazy"></picture></a></p>
 <footer>Apache License 2.0. <a href="https://github.com/riponcm/CharAI/">Source on GitHub</a>.</footer>
 </main></body></html>

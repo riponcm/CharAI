@@ -1,0 +1,5 @@
+film "One line of script" 4s
+stage width=1280 ground=600 scale=32
+actor Tess = skin tess at 770
+0.6 Tess: jump(to=770, height=1.0)
++0 Tess: wave()

@@ -1,0 +1,10 @@
+film "Moods change the walk" 8s
+stage width=2400 ground=600 scale=34
+actor Tess = skin tess at 900
+0 cam: cut(to=Tess, zoom=1)
+0 cam: follow(Tess, over=0.1)
+0 Tess: mood(happy)
+0 Tess: walk(to=1800)
+2.35 Tess: mood(sad)
+3.55 Tess: mood(angry)
+4.75 Tess: mood(happy)

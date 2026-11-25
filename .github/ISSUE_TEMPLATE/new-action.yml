@@ -1,0 +1,32 @@
+name: New action
+description: Suggest an action the engine does not have yet, or say you will write one.
+labels: ["action"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: One lower-case word, for example shrug.
+    validations:
+      required: true
+  - type: textarea
+    id: motion
+    attributes:
+      label: What the body does
+      description: Describe the motion in body terms, in a few key poses, with a rough duration.
+    validations:
+      required: true
+  - type: textarea
+    id: use
+    attributes:
+      label: Where a film would use it
+      description: A line of a .char script, or a short story moment.
+  - type: dropdown
+    id: who
+    attributes:
+      label: Who writes it
+      options:
+        - I will write it (see docs/ACTIONS.md)
+        - I would like someone else to
+    validations:
+      required: true

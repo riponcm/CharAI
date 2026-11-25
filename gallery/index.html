@@ -41,37 +41,56 @@ footer { padding-top:32px; padding-bottom:48px; color:var(--muted); font-size:.9
 </header>
 <main>
   <h2>Clips</h2>
-  <p class="sub">Six clips at 1280x720. Press play, or open the gif for a quick look.</p>
+  <p class="sub">Six clips at 1280x720. Press play, or open the animated preview (24 fps WebP) for a quick look.</p>
   <div class="grid">
     <article class="card">
-      <video controls loop playsinline preload="metadata" width="1280" height="720" aria-label="Six very different people in one line-up" muted><source src="../media/cast-lineup.mp4" type="video/mp4"></video>
+      <video controls loop playsinline preload="none" poster="../media/cast-lineup.webp" width="1280" height="720" aria-label="Six very different people in one line-up" muted><source src="../media/cast-lineup.mp4" type="video/mp4"></video>
       <div class="cap"><h3>Six very different people in one line-up</h3><p>A toddler, a grandfather, a baker, a tall woman, an athlete and a teenager, each drawn from a few numbers and paths, all on one stage.</p>
-        <p class="meta">9 s &middot; written as a short script &middot; <a href="../media/cast-lineup.gif">preview gif</a></p></div>
+        <p class="meta">9 s &middot; written as a short script &middot; <a href="../media/cast-lineup.webp">animated preview</a></p></div>
     </article>
     <article class="card">
-      <video controls loop playsinline preload="metadata" width="1280" height="720" aria-label="The toddler and the captain" muted><source src="../media/toddler-and-captain.mp4" type="video/mp4"></video>
+      <video controls loop playsinline preload="none" poster="../media/toddler-and-captain.webp" width="1280" height="720" aria-label="The toddler and the captain" muted><source src="../media/toddler-and-captain.mp4" type="video/mp4"></video>
       <div class="cap"><h3>The toddler and the captain</h3><p>A small child runs to an old sea captain, trips, cries, is comforted and plays peekaboo. Camera cuts and zooms are part of the script.</p>
-        <p class="meta">20 s &middot; written as a short script &middot; <a href="../media/toddler-and-captain.gif">preview gif</a></p></div>
+        <p class="meta">20 s &middot; written as a short script &middot; <a href="../media/toddler-and-captain.webp">animated preview</a></p></div>
     </article>
     <article class="card">
-      <video controls loop playsinline preload="metadata" width="1280" height="720" aria-label="The talking scene, with sound"><source src="../media/talk-voice.mp4" type="video/mp4"></video>
+      <video controls loop playsinline preload="none" poster="../media/talk-voice.webp" width="1280" height="720" aria-label="The talking scene, with sound"><source src="../media/talk-voice.mp4" type="video/mp4"></video>
       <div class="cap"><h3>The talking scene, with sound</h3><p>Two characters talk in close-up. The voices are the built-in Windows voices; the lip sync follows their timing. This clip has sound.</p>
-        <p class="meta">21 s &middot; written as a short script &middot; with sound &middot; <a href="../media/talk-voice.gif">preview gif</a></p></div>
+        <p class="meta">21 s &middot; written as a short script &middot; with sound &middot; <a href="../media/talk-voice.webp">animated preview</a></p></div>
     </article>
     <article class="card">
-      <video controls loop playsinline preload="metadata" width="1280" height="720" aria-label="The hug, the handover and the scuffle" muted><source src="../media/together.mp4" type="video/mp4"></video>
+      <video controls loop playsinline preload="none" poster="../media/together.webp" width="1280" height="720" aria-label="The hug, the handover and the scuffle" muted><source src="../media/together.mp4" type="video/mp4"></video>
       <div class="cap"><h3>The hug, the handover and the scuffle</h3><p>Characters that touch: a child hugs the baker and gets a loaf, two friends embrace, and a playful fight breaks out.</p>
-        <p class="meta">20 s &middot; written as a short script &middot; <a href="../media/together.gif">preview gif</a></p></div>
+        <p class="meta">20 s &middot; written as a short script &middot; <a href="../media/together.webp">animated preview</a></p></div>
     </article>
     <article class="card">
-      <video controls loop playsinline preload="metadata" width="1280" height="720" aria-label="Four moods, one walk" muted><source src="../media/gallery-moods.mp4" type="video/mp4"></video>
+      <video controls loop playsinline preload="none" poster="../media/gallery-moods.webp" width="1280" height="720" aria-label="Four moods, one walk" muted><source src="../media/gallery-moods.mp4" type="video/mp4"></video>
       <div class="cap"><h3>Four moods, one walk</h3><p>The same walk in happy, sad, angry and scared, on three different bodies. One mood line changes everything.</p>
-        <p class="meta">24 s &middot; written as a short script &middot; <a href="../media/gallery-moods.gif">preview gif</a></p></div>
+        <p class="meta">24 s &middot; written as a short script &middot; <a href="../media/gallery-moods.webp">animated preview</a></p></div>
     </article>
     <article class="card">
-      <video controls loop playsinline preload="metadata" width="1280" height="720" aria-label="Ten actions, three bodies" muted><source src="../media/gallery-actions.mp4" type="video/mp4"></video>
+      <video controls loop playsinline preload="none" poster="../media/gallery-actions.webp" width="1280" height="720" aria-label="Ten actions, three bodies" muted><source src="../media/gallery-actions.mp4" type="video/mp4"></video>
       <div class="cap"><h3>Ten actions, three bodies</h3><p>A montage of catalogue actions: jump for joy, salute, think, bow, clap, shrug, stomp, tantrum, yawn, jump. Each action is one small file of key poses.</p>
-        <p class="meta">25 s &middot; written as a short script &middot; <a href="../media/gallery-actions.gif">preview gif</a></p></div>
+        <p class="meta">25 s &middot; written as a short script &middot; <a href="../media/gallery-actions.webp">animated preview</a></p></div>
+    </article>
+  </div>
+  <h2>From the experiments</h2>
+  <p class="sub">Three films from the measured tests in <code>docs/EVIDENCE.md</code>. They were rendered with an earlier version of the engine, before the motion clips, spring physics and soft limbs were added, so today's engine would draw them differently. Original work; nothing here uses a third-party style library.</p>
+  <div class="grid">
+    <article class="card">
+      <video controls loop playsinline preload="none" poster="../media/kai-the-bridge.webp" width="1280" height="720" aria-label="Kai, the bridge (episode 1)"><source src="../media/kai-the-bridge.mp4" type="video/mp4"></video>
+      <div class="cap"><h3>Kai, the bridge (episode 1)</h3><p>Thirty seconds: a boy with a pack stops at the edge of a rope bridge. Written by Claude Sonnet in 203,205 tokens and 10.9 minutes, one of the two cheapest runs in the evidence. Made with an earlier engine, before the motion clips, spring physics and soft limbs.</p>
+        <p class="meta">30 s &middot; 1280x720, no sound &middot; <a href="../media/kai-the-bridge.webp">animated preview</a></p></div>
+    </article>
+    <article class="card">
+      <video controls loop playsinline preload="none" poster="../media/kai-the-cave.webp" width="1280" height="720" aria-label="Kai, the cave (episode 2)"><source src="../media/kai-the-cave.mp4" type="video/mp4"></video>
+      <div class="cap"><h3>Kai, the cave (episode 2)</h3><p>Thirty seconds, same boy, next episode. Written by Claude Sonnet in 221,852 tokens and 13.9 minutes, reusing Kai from episode 1. Made with an earlier engine, before the motion clips, spring physics and soft limbs.</p>
+        <p class="meta">30 s &middot; 1280x720, no sound &middot; <a href="../media/kai-the-cave.webp">animated preview</a></p></div>
+    </article>
+    <article class="card">
+      <video controls loop playsinline preload="none" poster="../media/first-jump.webp" width="1280" height="720" aria-label="First Jump (silhouette film)"><source src="../media/first-jump.mp4" type="video/mp4"></video>
+      <div class="cap"><h3>First Jump (silhouette film)</h3><p>A 30-second silhouette film. The engine lost this comparison on cost (391,611 tokens on Claude Opus against 318,987 for the other workflow, 35.7 minutes against 24.7) and on looks: it is flatter and the big-headed figures merge. Shown as it was, not re-run since the engine improved.</p>
+        <p class="meta">30 s &middot; 1280x720, no sound &middot; <a href="../media/first-jump.webp">animated preview</a></p></div>
     </article>
   </div>
   <h2>Live in your browser</h2>

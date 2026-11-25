@@ -1,0 +1,32 @@
+name: Bug report
+description: Something does not work, or a step in the documents fails.
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What did you expect, and what did you see instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps and output
+      description: The exact commands you ran and what they printed. Attach a picture if it is about how something looks.
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Your setup
+      description: Operating system, Node version (node -v), and the browser if one is involved.
+    validations:
+      required: true
+  - type: checkboxes
+    id: known
+    attributes:
+      label: Before you send
+      options:
+        - label: I looked at docs/KNOWN-ISSUES.md and it is not listed there.

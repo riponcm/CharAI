@@ -1,0 +1,6 @@
+film "Contribute loop" 5.2s
+stage width=1280 ground=600 scale=30
+actor Baker = skin baker at 1090 facing left
+0 Baker: idle(), face(happy)
+0.3 Baker: wave()
++0.2 Baker: wave()

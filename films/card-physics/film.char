@@ -1,0 +1,6 @@
+film "Physics that settles" 4s
+stage width=1280 ground=600 scale=36
+actor Tess = skin tess at 330
+0.0 Tess: run(to=650, speed=2.4), face(happy)
++0 Tess: idle()
+2.9 Tess: run(to=900, speed=2.4)

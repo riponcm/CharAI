@@ -1,0 +1,16 @@
+film "CharAI hero loop" 7s
+stage width=1280 ground=600 scale=33
+actor Tot = skin tot at 800 facing left
+actor Titan = skin titan at 1030 facing left
+actor Skye = skin skye at 1360 facing left
+0.0 Tot: idle()
+0.0 Titan: idle()
+0.2 Skye: walk(to=1190, speed=1.5), face(happy)
++0.1 Skye: wave()
+0.9 Tot: jumpjoy()
++0 Tot: jumpjoy()
++0 Tot: jumpjoy()
+2.2 Titan: bow()
++0.2 Titan: wave()
+5.2 Skye: turn()
++0 Skye: walk(to=1420, speed=1.5)

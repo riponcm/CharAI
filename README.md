@@ -1,26 +1,55 @@
-<p align="center"><img src="docs/img/header.svg" alt="CharAI: draw any person as data, direct them with a script." width="100%"></p>
+<p align="center">
+  <picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/header-dark.webp"><img src="docs/img/header-light.webp" alt="CharAI: draw any person as data, direct them with a script" width="1280"></picture>
+</p>
+
+<p align="center">
+  <a href="#get-started-in-three-steps"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-quick-start-dark.svg"><img src="docs/img/btn-quick-start-light.svg" alt="Quick start"></picture></a>
+  <a href="#gallery"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-gallery-dark.svg"><img src="docs/img/btn-gallery-light.svg" alt="Gallery"></picture></a>
+  <a href="#evidence-in-short"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-evidence-dark.svg"><img src="docs/img/btn-evidence-light.svg" alt="Evidence"></picture></a>
+  <a href="docs/"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-docs-dark.svg"><img src="docs/img/btn-docs-light.svg" alt="Docs"></picture></a>
+  <a href="SKILL.md"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-agent-skill-dark.svg"><img src="docs/img/btn-agent-skill-light.svg" alt="Agent skill"></picture></a>
+</p>
+
+<p align="center">
+  <a href="LICENSE"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/badge-apache-2-dark.svg"><img src="docs/img/badge-apache-2-light.svg" alt="Apache 2.0"></picture></a>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/badge-side-view-dark.svg"><img src="docs/img/badge-side-view-light.svg" alt="Side view"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/badge-no-dependencies-dark.svg"><img src="docs/img/badge-no-dependencies-light.svg" alt="No dependencies"></picture>
+</p>
 
 # CharAI: 2D character animation engine and AI agent skill
 
-CharAI is an open-source 2D character animation engine and agent skill (a Claude Code skill, usable by any agent that can read a skill file and run Node). It is for people and AI agents who want text to animation for human characters: the agent draws any human as a small data file (a skeletal rig skin, SVG paths), directs it with a short `.char` script, and CharAI supplies motion, physics, moods, lip sync and speech, two-character contact and props. Characters only, side view only. Every frame is a pure function of time (`seek(t)`), so any tool with a clock can drive it.
+CharAI is an open-source 2D character animation engine and agent skill (a Claude Code skill, usable by any agent that can read a skill file and run Node). It is for people and AI agents who want text to animation for human characters: the agent draws any human as a small data file (a skeletal rig skin, SVG paths), directs it with a short `.char` script, and CharAI supplies motion, physics, moods, lip sync and speech, two-character contact and props. Characters only, side view only. Every frame is a pure function of time (`seek(t)`), so any tool with a clock can drive it. No runtime dependencies: one script file, `dist/char.js`, and a `<char-stage>` web component. Export MP4, transparent WebM and ProRes, PNG sequence, or animated SVG. Scenery is not drawn; the host supplies it.
 
-<p align="center">
-<a href="#quick-start"><img src="docs/img/btn-quick-start.svg" alt="Quick start"></a>
-<a href="#gallery"><img src="docs/img/btn-gallery.svg" alt="Gallery"></a>
-<a href="#evidence-in-short"><img src="docs/img/btn-evidence.svg" alt="Evidence"></a>
-<a href="docs/"><img src="docs/img/btn-docs.svg" alt="Docs"></a>
-<a href="SKILL.md"><img src="docs/img/btn-agent-skill.svg" alt="Agent skill"></a>
-<br>
-<img src="docs/img/badge-apache-2.svg" alt="Apache 2.0"> <img src="docs/img/badge-side-view.svg" alt="side view"> <img src="docs/img/badge-no-dependencies.svg" alt="no dependencies">
-</p>
+## Get started in three steps
 
-<p align="center">
-<a href="media/cast-lineup.mp4"><img src="media/cast-lineup.gif" alt="Six people in a line-up" width="32%"></a>
-<a href="media/toddler-and-captain.mp4"><img src="media/toddler-and-captain.gif" alt="A toddler and a captain" width="32%"></a>
-<a href="media/together.mp4"><img src="media/together.gif" alt="A hug, a handover, a scuffle" width="32%"></a>
-</p>
+Needs Node 18 or newer. For pictures and video also Chrome or Edge, and ffmpeg for MP4.
 
-No runtime dependencies: one script file, `dist/char.js`, and a `<char-stage>` web component. Export MP4, transparent WebM and ProRes, PNG sequence, or animated SVG. Scenery is not drawn; the host supplies it.
+**With Claude Code (the skill).** Only Claude models have been tried.
+
+1. `git clone https://github.com/riponcm/CharAI .claude/skills/charai`
+2. `cd .claude/skills/charai && npm install`
+3. Ask Claude Code: "Use CharAI to draw a character, a tall grandmother with a silver bun and a green cardigan, and show me her cast sheet."
+
+**By yourself, with the engine.**
+
+1. `git clone https://github.com/riponcm/CharAI && cd CharAI && npm install`
+2. `node tools/check.cjs examples/hello.char`
+3. `node tools/render.cjs examples/hello.char hello.mp4` and watch eight seconds of a girl walking in and waving.
+
+Your own page, a video editor, making a character, and what to do when a step fails: [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md).
+
+<table>
+  <tr>
+    <td align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/feature-any-body-from-numbers-dark.webp"><img src="docs/img/feature-any-body-from-numbers-light.webp" alt="Any body from numbers: six very different bodies jump for joy" width="280"></picture></td>
+    <td align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/feature-physics-that-settles-dark.webp"><img src="docs/img/feature-physics-that-settles-light.webp" alt="Physics that settles: hair and scarf swing and settle after a stop" width="280"></picture></td>
+    <td align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/feature-moods-change-the-walk-dark.webp"><img src="docs/img/feature-moods-change-the-walk-light.webp" alt="Moods change the walk: happy, sad and angry" width="280"></picture></td>
+  </tr>
+  <tr>
+    <td align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/feature-speech-and-lip-sync-dark.webp"><img src="docs/img/feature-speech-and-lip-sync-light.webp" alt="Speech and lip sync: a close-up of a baker talking" width="280"></picture></td>
+    <td align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/feature-characters-that-touch-dark.webp"><img src="docs/img/feature-characters-that-touch-light.webp" alt="Characters that touch: a hug" width="280"></picture></td>
+    <td align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/feature-one-line-of-script-dark.webp"><img src="docs/img/feature-one-line-of-script-light.webp" alt="One line of script: the line is typed while the character does it" width="280"></picture></td>
+  </tr>
+</table>
 
 ## The .char script
 
@@ -57,22 +86,7 @@ Single runs; the baseline's setup and the engine's build cost are not counted. F
 - **Claude Code and Claude models.** Built with them (see the FAQ). Only Claude models have been tried; any agent that can read a skill file and run Node can use it.
 - **Hosts.** Plain HTML pages: tested (`examples/host.html`, `examples/page.html`). Remotion, HyperFrames and GSAP: snippets in [`docs/HOSTS.md`](docs/HOSTS.md), not yet tested.
 - **Style libraries** such as Lemo-Opuscar: meant as a character layer beside them. There is no integration code.
-
-## Install as an agent skill
-
-Copy or clone this repository into the agent's skills folder; for Claude Code that is `.claude/skills/charai/`. The agent then reads [`SKILL.md`](SKILL.md), which sends it to one document for each of three jobs: draw a character ([`docs/CHARACTER.md`](docs/CHARACTER.md)), write a film ([`docs/AUTHORING.md`](docs/AUTHORING.md)), add an action ([`docs/ACTIONS.md`](docs/ACTIONS.md)).
-
-## Quick start
-
-Needs Node 18 or newer. For pictures and video, also Chrome or Edge, `npm install` once (`puppeteer-core`), and ffmpeg on the PATH for MP4.
-
-```
-node --test tests/*.cjs                       # the test suite
-node tools/check.cjs films/demo               # check a film; writes films/demo/index.html
-node tools/render.cjs films/demo demo.mp4     # an MP4
-```
-
-A character is a skin file: numbers on top of the `mannequin` skin plus a few SVG paths ([`docs/CHARACTER.md`](docs/CHARACTER.md)).
+- **As an agent skill:** [`SKILL.md`](SKILL.md) sends the agent to one document for each of three jobs: draw a character ([`docs/CHARACTER.md`](docs/CHARACTER.md)), write a film ([`docs/AUTHORING.md`](docs/AUTHORING.md)), add an action ([`docs/ACTIONS.md`](docs/ACTIONS.md)).
 
 ## Evidence in short
 
@@ -86,13 +100,28 @@ Figures from [`docs/EVIDENCE.md`](docs/EVIDENCE.md); each case was run once.
 
 ## Gallery
 
+Click a preview for the MP4. All clips on one page: [`gallery/index.html`](gallery/index.html).
+
 <p align="center">
-<a href="media/talk-voice.mp4"><img src="media/talk-voice.gif" alt="A voiced talking scene" width="32%"></a>
-<a href="media/gallery-moods.mp4"><img src="media/gallery-moods.gif" alt="One walk in four moods" width="32%"></a>
-<a href="media/gallery-actions.mp4"><img src="media/gallery-actions.gif" alt="Ten actions on three bodies" width="32%"></a>
+<a href="media/cast-lineup.mp4"><img src="media/cast-lineup.webp" alt="Six people in a line-up" width="32%"></a>
+<a href="media/toddler-and-captain.mp4"><img src="media/toddler-and-captain.webp" alt="A toddler and a captain" width="32%"></a>
+<a href="media/together.mp4"><img src="media/together.webp" alt="A hug, a handover, a scuffle" width="32%"></a>
+<a href="media/talk-voice.mp4"><img src="media/talk-voice.webp" alt="A voiced talking scene" width="32%"></a>
+<a href="media/gallery-moods.mp4"><img src="media/gallery-moods.webp" alt="One walk in four moods" width="32%"></a>
+<a href="media/gallery-actions.mp4"><img src="media/gallery-actions.webp" alt="Ten actions on three bodies" width="32%"></a>
 </p>
 
-All clips on one page: [`gallery/index.html`](gallery/index.html).
+**From the experiments.** Made with an earlier engine, from the measured tests in the evidence page:
+
+<p align="center">
+<a href="media/kai-the-bridge.mp4"><img src="media/kai-the-bridge.webp" alt="Kai, episode 1, the bridge" width="32%"></a>
+<a href="media/kai-the-cave.mp4"><img src="media/kai-the-cave.webp" alt="Kai, episode 2, the cave" width="32%"></a>
+<a href="media/first-jump.mp4"><img src="media/first-jump.webp" alt="First Jump, a silhouette film" width="32%"></a>
+</p>
+
+- **Kai, the bridge:** Claude Sonnet, 203,205 tokens, 10.9 minutes.
+- **Kai, the cave:** Claude Sonnet, 221,852 tokens, 13.9 minutes.
+- **First Jump:** Claude Opus, 391,611 tokens, 35.7 minutes. CharAI lost this comparison on cost and looks, and it has not been re-run.
 
 ## FAQ
 
@@ -132,5 +161,13 @@ Write a small file of key poses in body terms, register it in `CharActions`, and
 ## Limits and status
 
 Known faults: [`docs/KNOWN-ISSUES.md`](docs/KNOWN-ISSUES.md). Agents wrote all of the code; no person has reviewed it line by line yet. Next: three-quarter and front views.
+
+## Contribute
+
+Draw a character, add an action, write an example film, fix a known issue, or try a host. Start with [`CONTRIBUTING.md`](CONTRIBUTING.md); share what you make in [Discussions](https://github.com/riponcm/CharAI/discussions).
+
+<p align="center">
+  <a href="CONTRIBUTING.md"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/contribute-dark.webp"><img src="docs/img/contribute-light.webp" alt="Make CharAI better: draw a character, add an action, write an example film, fix a known issue" width="1280"></picture></a>
+</p>
 
 Licence: Apache 2.0, [`LICENSE`](LICENSE), [`NOTICE`](NOTICE).

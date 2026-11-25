@@ -1,0 +1,14 @@
+film "Any body from numbers" 3s
+stage width=1280 ground=600 scale=18
+actor Tot = skin tot at 446
+actor Skye = skin skye at 506
+actor Gramps = skin gramps at 566
+actor Baker = skin baker at 628
+actor Vera = skin vera at 697
+actor Titan = skin titan at 765
+0.2 Tot: jumpjoy()
+0.3 Skye: jumpjoy()
+0.4 Gramps: jumpjoy()
+0.5 Baker: jumpjoy()
+0.6 Vera: jumpjoy()
+0.7 Titan: jumpjoy()

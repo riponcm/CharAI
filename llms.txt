@@ -4,9 +4,11 @@
 
 ## The skill
 
+- [docs/GETTING-STARTED.md](https://github.com/riponcm/CharAI/blob/main/docs/GETTING-STARTED.md): Step by step: use it as a Claude Code skill, use the engine yourself, or put characters in your own page.
 - [SKILL.md](https://github.com/riponcm/CharAI/blob/main/SKILL.md): Start here: which document to read for each of the three jobs (draw a character, write a film, add an action).
 - [README.md](https://github.com/riponcm/CharAI/blob/main/README.md): What CharAI is, the .char script, install as an agent skill, FAQ.
 - [AGENTS.md](https://github.com/riponcm/CharAI/blob/main/AGENTS.md): Rules and commands for coding agents working in this repository.
+- [CONTRIBUTING.md](https://github.com/riponcm/CharAI/blob/main/CONTRIBUTING.md): How to contribute: characters, actions, films, fixes, documents, hosts; the rules.
 
 ## Documents
 

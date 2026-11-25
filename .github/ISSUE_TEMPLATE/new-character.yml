@@ -1,0 +1,25 @@
+name: New character
+description: Propose an example character, or say you are drawing one.
+labels: ["character"]
+body:
+  - type: textarea
+    id: who
+    attributes:
+      label: The person
+      description: Age, build, clothes, anything distinctive. Characters are added as examples, so say what this one adds that the existing ones do not.
+    validations:
+      required: true
+  - type: textarea
+    id: look
+    attributes:
+      label: Picture or sketch (optional)
+      description: Attach a sketch, or a cast sheet from tools/cast.cjs if you have one.
+  - type: checkboxes
+    id: original
+    attributes:
+      label: Original design
+      options:
+        - label: This is my own design, not a copy of an existing character or artwork.
+          required: true
+        - label: I am happy for it to be licensed under Apache 2.0.
+          required: true

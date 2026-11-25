@@ -1,0 +1,7 @@
+film "Characters that touch" 4s
+stage width=1280 ground=600 scale=30
+actor Tot = skin tot at 655
+actor Baker = skin baker at 700 facing left
+0 Tot: idle(), mood(happy)
+0 Baker: idle(), mood(happy)
+0.2 Tot: hug(with=Baker, for=2.2)

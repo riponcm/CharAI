@@ -1,0 +1,6 @@
+film "Speech and lip sync" 3.2s
+stage width=1280 ground=600 scale=60
+actor Baker = skin baker at 700
+0 Baker: idle(), face(neutral)
+0.4 Baker: face(happy)
+0.5 Baker: say("Fresh bread, still warm!", for=2.2, beats=1)
