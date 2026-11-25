@@ -1,5 +1,5 @@
 film "CharAI hero loop" 7s
-stage width=1280 ground=600 scale=33
+stage width=1500 ground=600 scale=33
 actor Tot = skin tot at 800 facing left
 actor Titan = skin titan at 1030 facing left
 actor Skye = skin skye at 1360 facing left

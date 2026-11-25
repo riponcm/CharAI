@@ -163,6 +163,11 @@
         continue;
       }
       const g = given[k];
+      if ((k === 'text' || k === 'sub') && g.kind !== 'string') {   // spoken and printed text is always in quotes
+        const show = (v, key) => v.kind === 'string' || key === 'text' || key === 'sub' ? JSON.stringify(String(v.v)) : String(v.v);
+        const fixed = raw.name + '(' + raw.pos.map((p, i) => show(p, keys[i])).concat(Object.keys(raw.named).map(n => n + '=' + show(raw.named[n], n))).join(', ') + ')';
+        errs.push(`${raw.name}: the ${k} must be in quotes, got ${g.v}. Write: ${ctx.prefix || ''}${fixed}`); continue;
+      }
       if (g.kind === 'bad') { errs.push(`cannot read value '${g.v}' for ${k}. Use a number, a name, or "text in quotes".`); continue; }
       if (typeof def === 'number' && g.kind !== 'number' && !PLACE_KEYS[k] && !(k === 'on' && g.kind !== 'bad' && typeof g.v === 'string')) { errs.push(`${raw.name}: ${k} must be a number, got '${g.v}'.`); continue; }
       const en = ENUMS[raw.name + '.' + k];
@@ -299,7 +304,7 @@
           D('unknown-action', ln, `${L.target} has no action '${raw.name}'.${suggest(raw.name, valid)} Valid for ${kind === 'actor' ? 'actors' : L.target}: ${list(valid)}.${extra}`);
           continue;
         }
-        const b = bind(raw, sc, { where: L.target });
+        const b = bind(raw, sc, { where: L.target, prefix: `${L.rel ? '+' : ''}${L.num} ${L.target}: ` });
         for (const e of b.errs) D('bad-arg', ln, e);
         if (b.errs.length) continue;
         const call = { name: raw.name, args: b.args, given: b.given, channel: sc.channel, moves: !!sc.moves };

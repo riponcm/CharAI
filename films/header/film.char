@@ -1,5 +1,5 @@
 film "CharAI header loop" 7s
-stage width=1280 ground=690 scale=58
+stage width=1500 ground=690 scale=58
 actor Tot = skin tot at 1400 facing left
 actor Tess = skin tess at 1400 facing left
 

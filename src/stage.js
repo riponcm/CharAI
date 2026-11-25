@@ -284,6 +284,31 @@
     // declared puppets, props and actors are also places (where they were put at the start)
     for (const d of P.puppets.concat(P.props, P.actors)) { const p = placeOf(d.at); if (p && !anchors[d.name]) anchors[d.name] = p; }
 
+    // ----- mistakes the page would only show as a wrong picture: errors with the line to change -----
+    {
+      const acts = (typeof globalThis !== 'undefined' ? globalThis : {}).CharActions || {};
+      const actorNames = P.actors.map(d => d.name);
+      const stageX = v => { const p = typeof v === 'number' ? [v] : (anchors[v] && typeof anchors[v] !== 'function' ? anchors[v] : null); return p ? p[0] : null; };
+      for (const st of P.statements) if (st.kind === 'actor') for (const c of st.calls) {
+        // a body move must end on the stage: 0 .. width
+        if (c.moves && c.given && 'to' in c.given) {
+          const x = stageX(c.given.to);
+          if (x !== null && (x < 0 || x > W)) {
+            const edge = x < 0 ? 0 : W, what = typeof c.given.to === 'number' ? '' : ` ('${c.given.to}' is at x=${Math.round(x)})`;
+            libDiag.push({ code: 'off-stage', line: st.line, severity: 'error', message: `${st.target}: ${c.name}(to=${c.given.to}) is off the stage${what}; the stage is ${W} wide. Write a place from 0 to ${W}, for example ${c.name}(to=${edge}).` });
+          }
+        }
+        // a pair action needs a partner who is another actor
+        const pd = acts[c.name];
+        if (pd && typeof pd === 'object' && pd.pair) {
+          const w = c.given && c.given.with, others = actorNames.filter(n => n !== st.target);
+          const eg = `${c.name}(with=${others[0] || 'Name'})`;
+          if (w === undefined || w === '') libDiag.push({ code: 'pair-partner', line: st.line, severity: 'error', message: `${st.target}: ${c.name} needs a partner. Write ${eg}. Actors it could be: ${others.length ? others.join(', ') : '(none, declare a second actor first)'}.` });
+          else if (others.indexOf(w) < 0) libDiag.push({ code: 'pair-partner', line: st.line, severity: 'error', message: `${st.target}: ${c.name}(with=${w}) names ${w === st.target ? 'itself' : 'no actor'}.${w === st.target ? '' : CharScript.suggest(w, others)} Write ${eg}. Actors it could be: ${others.length ? others.join(', ') : '(none, declare a second actor first)'}.` });
+        }
+      }
+    }
+
     // ----- clock: beat grids (tempo) and world freezes -----
     // Script times are real (film) time. Actors, puppets and the water live in world time, which
     // stands still during a freeze: world = real minus the frozen time before it. On a beat grid an

@@ -2369,7 +2369,12 @@ var G = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefi
       // enumerations and places
       const enumOf = { name: Object.keys(CharPoses.moodMotion || {}), mood: Object.keys(MOODS), how: ['up', 'front', 'side'], hand: ['near', 'far', 'both'], from: ['left', 'right'], end: ['stop', 'skid'] };
       for (const a of Object.keys(enumOf)) if (a in args && enumOf[a].indexOf(args[a]) < 0) {
-        D('bad-arg', t, line, `${name}: ${a}=${args[a]} is not valid. Use one of: ${enumOf[a].join(', ')}.`, 'warning');
+        // a misspelt mood or face name is an error: the film would show the wrong feeling (or none)
+        if (a === 'mood' || (a === 'name' && name === 'mood')) {
+          let best = null, bd = 99;
+          for (const n of enumOf[a]) { const d = lev(String(args[a]), n); if (d < bd) { bd = d; best = n; } }
+          D('bad-arg', t, line, `${name}: '${args[a]}' is not a ${name === 'mood' ? 'mood' : 'face'} name. Nearest valid name is '${best}', so write ${name}(${best}). Valid: ${enumOf[a].join(', ')}.`);
+        } else D('bad-arg', t, line, `${name}: ${a}=${args[a]} is not valid. Use one of: ${enumOf[a].join(', ')}.`, 'warning');
         args[a] = spec.args[a] !== null ? spec.args[a] : enumOf[a][0];
       }
       for (const a of ['to', 'at']) if (a in args) {
@@ -4161,6 +4166,11 @@ var G = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefi
         continue;
       }
       const g = given[k];
+      if ((k === 'text' || k === 'sub') && g.kind !== 'string') {   // spoken and printed text is always in quotes
+        const show = (v, key) => v.kind === 'string' || key === 'text' || key === 'sub' ? JSON.stringify(String(v.v)) : String(v.v);
+        const fixed = raw.name + '(' + raw.pos.map((p, i) => show(p, keys[i])).concat(Object.keys(raw.named).map(n => n + '=' + show(raw.named[n], n))).join(', ') + ')';
+        errs.push(`${raw.name}: the ${k} must be in quotes, got ${g.v}. Write: ${ctx.prefix || ''}${fixed}`); continue;
+      }
       if (g.kind === 'bad') { errs.push(`cannot read value '${g.v}' for ${k}. Use a number, a name, or "text in quotes".`); continue; }
       if (typeof def === 'number' && g.kind !== 'number' && !PLACE_KEYS[k] && !(k === 'on' && g.kind !== 'bad' && typeof g.v === 'string')) { errs.push(`${raw.name}: ${k} must be a number, got '${g.v}'.`); continue; }
       const en = ENUMS[raw.name + '.' + k];
@@ -4297,7 +4307,7 @@ var G = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefi
           D('unknown-action', ln, `${L.target} has no action '${raw.name}'.${suggest(raw.name, valid)} Valid for ${kind === 'actor' ? 'actors' : L.target}: ${list(valid)}.${extra}`);
           continue;
         }
-        const b = bind(raw, sc, { where: L.target });
+        const b = bind(raw, sc, { where: L.target, prefix: `${L.rel ? '+' : ''}${L.num} ${L.target}: ` });
         for (const e of b.errs) D('bad-arg', ln, e);
         if (b.errs.length) continue;
         const call = { name: raw.name, args: b.args, given: b.given, channel: sc.channel, moves: !!sc.moves };
@@ -4775,6 +4785,31 @@ var G = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefi
     const placeOf = v => typeof v === 'number' ? [v, ground(v)] : (anchors[v] ? (typeof anchors[v] === 'function' ? anchors[v](0).slice() : anchors[v].slice()) : null);
     // declared puppets, props and actors are also places (where they were put at the start)
     for (const d of P.puppets.concat(P.props, P.actors)) { const p = placeOf(d.at); if (p && !anchors[d.name]) anchors[d.name] = p; }
+
+    // ----- mistakes the page would only show as a wrong picture: errors with the line to change -----
+    {
+      const acts = (typeof globalThis !== 'undefined' ? globalThis : {}).CharActions || {};
+      const actorNames = P.actors.map(d => d.name);
+      const stageX = v => { const p = typeof v === 'number' ? [v] : (anchors[v] && typeof anchors[v] !== 'function' ? anchors[v] : null); return p ? p[0] : null; };
+      for (const st of P.statements) if (st.kind === 'actor') for (const c of st.calls) {
+        // a body move must end on the stage: 0 .. width
+        if (c.moves && c.given && 'to' in c.given) {
+          const x = stageX(c.given.to);
+          if (x !== null && (x < 0 || x > W)) {
+            const edge = x < 0 ? 0 : W, what = typeof c.given.to === 'number' ? '' : ` ('${c.given.to}' is at x=${Math.round(x)})`;
+            libDiag.push({ code: 'off-stage', line: st.line, severity: 'error', message: `${st.target}: ${c.name}(to=${c.given.to}) is off the stage${what}; the stage is ${W} wide. Write a place from 0 to ${W}, for example ${c.name}(to=${edge}).` });
+          }
+        }
+        // a pair action needs a partner who is another actor
+        const pd = acts[c.name];
+        if (pd && typeof pd === 'object' && pd.pair) {
+          const w = c.given && c.given.with, others = actorNames.filter(n => n !== st.target);
+          const eg = `${c.name}(with=${others[0] || 'Name'})`;
+          if (w === undefined || w === '') libDiag.push({ code: 'pair-partner', line: st.line, severity: 'error', message: `${st.target}: ${c.name} needs a partner. Write ${eg}. Actors it could be: ${others.length ? others.join(', ') : '(none, declare a second actor first)'}.` });
+          else if (others.indexOf(w) < 0) libDiag.push({ code: 'pair-partner', line: st.line, severity: 'error', message: `${st.target}: ${c.name}(with=${w}) names ${w === st.target ? 'itself' : 'no actor'}.${w === st.target ? '' : CharScript.suggest(w, others)} Write ${eg}. Actors it could be: ${others.length ? others.join(', ') : '(none, declare a second actor first)'}.` });
+        }
+      }
+    }
 
     // ----- clock: beat grids (tempo) and world freezes -----
     // Script times are real (film) time. Actors, puppets and the water live in world time, which

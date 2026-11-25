@@ -195,19 +195,19 @@ Transparent output needs a bare-stage film (a `set` line paints scenery). Keep t
 | `unknown skin 'zed'. Available skins: ...` | Copy the skin file into `films/<name>/skins/` or fix the name. |
 | `unknown target 'Bob'. Did you mean 'Tot'?` | Declare `actor Bob = skin ... at ...` or fix the name. |
 | `Tot is outside the frame ... Pan the camera to Tot first` | Add `cam: follow(Tot)` or `cam: pan(to=Tot)` before the line. |
-| `walk and run both use the body channel, so they cannot start on one line` | Move one to its own line with `+0`. |
-| `Tot cannot hold 'loaf': declare it first with 'prop loaf'` | Add `prop loaf at 400`. |
+| `Kai: walk(to=5000) is off the stage; the stage is 1400 wide. Write a place from 0 to 1400, for example walk(to=1400).` | Move `to=` inside the stage (or widen `stage width=`). |
+| `Kai: hug needs a partner. Write hug(with=Tess). Actors it could be: Tess.` | Add `with=<actor>` to every pair action (hug, handshake, give, ...). |
+| `say: the text must be in quotes, got hello. Write: 1 Kai: say("hello")` | Put the text of say, caption and card in "quotes". |
+| `Tess: face: 'happyy' is not a face name. Nearest valid name is 'happy', so write face(happy). Valid: neutral, happy, ...` | Use a listed name; `mood(...)` is the same. |
 | `colour 'teal' is not in the palette` | Add `teal: '#rrggbb'` to the skin's `palette`. |
 | `'pinky' is not a landmark` (actioncheck) | Use a landmark from the list above. |
 
-Warnings do not fail the check, but `face: mood=grumpy is not valid` and `camera wants x=5000 but stops at x=760` mean the script is wrong; `planted foot slides` of 3 to 13 px is known.
+Warnings do not fail the check, but `camera wants x=5000 but stops at x=760` means the script is wrong; `planted foot slides` of 3 to 13 px is known.
 
 ## Limits and known issues
 
 - Side view only; flat cartoon styles; believable, not simulated, physics; simple hands.
 - Not built: hand in hand, carrying a child, pushing a heavy object, three or more people in one action.
-- A walk or run to an x beyond the stage is not flagged; keep `to=` inside `stage width=`.
-- `hug()` and `say(hello)` without `with=` or quotes pass `check`; write them in full.
 - Speech is text-driven, not polished; films over 30 s are untested. Details: `docs/KNOWN-ISSUES.md`.
 
 ## Where to read more

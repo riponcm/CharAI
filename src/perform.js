@@ -267,7 +267,12 @@
       // enumerations and places
       const enumOf = { name: Object.keys(CharPoses.moodMotion || {}), mood: Object.keys(MOODS), how: ['up', 'front', 'side'], hand: ['near', 'far', 'both'], from: ['left', 'right'], end: ['stop', 'skid'] };
       for (const a of Object.keys(enumOf)) if (a in args && enumOf[a].indexOf(args[a]) < 0) {
-        D('bad-arg', t, line, `${name}: ${a}=${args[a]} is not valid. Use one of: ${enumOf[a].join(', ')}.`, 'warning');
+        // a misspelt mood or face name is an error: the film would show the wrong feeling (or none)
+        if (a === 'mood' || (a === 'name' && name === 'mood')) {
+          let best = null, bd = 99;
+          for (const n of enumOf[a]) { const d = lev(String(args[a]), n); if (d < bd) { bd = d; best = n; } }
+          D('bad-arg', t, line, `${name}: '${args[a]}' is not a ${name === 'mood' ? 'mood' : 'face'} name. Nearest valid name is '${best}', so write ${name}(${best}). Valid: ${enumOf[a].join(', ')}.`);
+        } else D('bad-arg', t, line, `${name}: ${a}=${args[a]} is not valid. Use one of: ${enumOf[a].join(', ')}.`, 'warning');
         args[a] = spec.args[a] !== null ? spec.args[a] : enumOf[a][0];
       }
       for (const a of ['to', 'at']) if (a in args) {

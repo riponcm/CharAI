@@ -32,6 +32,9 @@ stage width=2400 ground=600 scale=68    # world width px, ground y px, px per he
 
 Anchors `left`, `center`, `right` (x 200, 640, 1080) exist; plain numbers work too. With a
 `set` line nothing changes. See `films/bare-test/film.char`.
+A move `to=` (walk, run, sneak, jump), by number, anchor or name, must land between 0 and the stage
+width (the set's width when a `set` is used), or the check fails; to let an actor run off screen, make
+the stage wider than the frame, for example `stage width=1500`.
 
 **Char.mount (for a host page).** Load `src/rig.js gait.js poses.js clips.js perform.js`, your
 skin files, then `src/script.js stage.js`. Then:
@@ -123,7 +126,8 @@ Timed lines: `<time> <target>: call(args)[, call(args)]`
   previous line has finished (a walk finishes when the actor arrives and settles). `+0` = right after.
 - Calls on one line start together and must use different channels (see tables).
 - Arguments: positional in the listed order, or `key=value`. Values: numbers, names, `"text"`.
-  `face(scared)` = `face(mood=scared)`.
+  `face(scared)` = `face(mood=scared)`. The text of `say`, `caption` and `card` (also `sub=`) must be in
+  quotes: `say("Hello")`. A mood or face name that does not exist is an error (nearest name suggested).
 - A target's lines must go forward in time. A new line on the same channel before a move
   finishes is an error (the move would be cut): use `+0` or a later time.
 
@@ -154,7 +158,7 @@ the body), **face**, **look**. Required arguments have no `=`.
 | arms | `cheer()` | both arms up |
 | arms | `hold(prop, how=front)` | how = up, front, side; keeps holding |
 | arms | `drop()` | the prop falls to the ground (`quiet=1`: no gesture) |
-| pair | `hug(with=B, speed=1)` | a paired action: A walks up, both play their role (docs/PAIRS.md): hug, handshake, highfive, pat, shove, punchblock, punchfall, give(prop=), throwto(prop=). `speed=` or `for=` (seconds) set the length; the line occupies both actors, so either one's next `+0` waits for it; afterwards they stand apart |
+| pair | `hug(with=B, speed=1)` | a paired action (`with=` is required and must be another actor): A walks up, both play their role (docs/PAIRS.md): hug, handshake, highfive, pat, shove, punchblock, punchfall, give(prop=), throwto(prop=). `speed=` or `for=` (seconds) set the length; the line occupies both actors, so either one's next `+0` waits for it; afterwards they stand apart |
 | props | `pickup(prop=box)`, `sit(on=chair)`, `knock(on=door)` | walks to the prop first; grip, weight, seat, upright: docs/PROPS.md |
 | face | `face(mood=neutral)` | happy, scared, determined, surprised, sad, neutral, excited, angry, tired, proud, shy |
 | mood | `mood(name=neutral, strength=1)` | colours every motion until the next mood line: neutral, happy, sad, angry, scared, tired, proud, shy (`docs/ACTIONS.md`) |
