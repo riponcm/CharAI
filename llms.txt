@@ -22,6 +22,7 @@
 
 ## Evidence and limits
 
+- [docs/COMPARISON.md](https://github.com/riponcm/CharAI/blob/main/docs/COMPARISON.md): With and without CharAI: measured costs side by side, when to use it and when not.
 - [docs/EVIDENCE.md](https://github.com/riponcm/CharAI/blob/main/docs/EVIDENCE.md): Measured token and time costs, including a comparison CharAI lost.
 - [docs/KNOWN-ISSUES.md](https://github.com/riponcm/CharAI/blob/main/docs/KNOWN-ISSUES.md): What is missing, wrong or untested in this release.
 

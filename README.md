@@ -35,6 +35,23 @@ actor Kai = skin kai at 160
 
 Each line is a time, an actor and calls such as `walk`, `face`, `say`, `hug`. More single-file examples: [`examples/`](examples/). Full syntax: [`docs/AUTHORING.md`](docs/AUTHORING.md).
 
+## With and without CharAI
+
+"Without" means an agent hand-codes each film; the measured baseline is the Lemo-Opuscar style-library workflow.
+
+| | Without CharAI | With CharAI |
+| --- | --- | --- |
+| A character | re-coded inside every film | one skin file of 1.3 to 2.2 KB, reused unchanged |
+| Two 30-second episodes, Claude Sonnet | 667,202 tokens, 74 minutes | 425,057 tokens, 25 minutes |
+| Two 30-second episodes, Claude Opus | 532,368 tokens, 39 minutes | 477,333 tokens, 33 minutes |
+| A new action | key poses inside the film's code | a 0.4 to 0.7 KB file, about 8,200 Sonnet tokens |
+| On a smaller model | cost more than the larger model | the cheapest run of all |
+| Changing one moment | regenerate; the rest may change | edit one script line and render again; only what follows from the edit changes |
+| A scenery-rich one-off film (silhouette, Opus) | 318,987 tokens, 24.7 minutes, better-looking | 391,611 tokens, 35.7 minutes: CharAI lost |
+| Views and 3D | anything the agent can code | side view only, no 3D |
+
+Single runs; the baseline's setup and the engine's build cost are not counted. Full table, when to use it and when not: [`docs/COMPARISON.md`](docs/COMPARISON.md).
+
 ## Works with
 
 - **Claude Code and Claude models.** Built with them (see the FAQ). Only Claude models have been tried; any agent that can read a skill file and run Node can use it.
@@ -90,6 +107,9 @@ The frame is a pure function of time (`seek(t)`), the contract those timelines u
 
 **How does it compare with Lemo-Opuscar?**
 Lemo-Opuscar is a style library for code-made films. On two 30 s episodes on Sonnet, CharAI used 425,057 tokens against 667,202; on a 30 s silhouette film on Opus it lost, at 391,611 against 318,987, and looked worse. These are single runs, and CharAI is meant to complement style libraries as their character layer.
+
+**Why use CharAI when new models can animate freehand?**
+Code-made animation by frontier models is improving fast, but those films are generated from scratch each time, so the cost is paid again for every film and every change, and characters are re-drawn each time. CharAI does the repeated part once, which is what the table above measures. It has been tried only with the Claude models named in the evidence page and has not been compared with any unreleased or newer model (see `docs/COMPARISON.md`, November 2026).
 
 **Which models built it?**
 It was built with Claude Code. Claude Fable 5.2 was architect and reviewer, Claude Opus 5.5 wrote the engine code, and Claude Sonnet wrote characters, actions, scenes, tools and packaging from the documents alone. Only Claude models have been tried.
