@@ -1,10 +1,7 @@
-<defs><linearGradient id="hbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#232b57"/><stop offset="1" stop-color="#0e1124"/></linearGradient>
-<linearGradient id="hground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d3668"/><stop offset="1" stop-color="#1a2046"/></linearGradient></defs>
-<rect width="1280" height="360" fill="url(#hbg)"/>
-<circle cx="1120" cy="60" r="150" fill="#ffb84d" opacity=".07"/><circle cx="1010" cy="40" r="60" fill="#ffb84d" opacity=".06"/>
-<rect y="330" width="1280" height="30" fill="url(#hground)"/><rect y="330" width="1280" height="2" fill="#ffb84d" opacity=".55"/>
-<g font-family="'Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif">
-<text x="60" y="132" font-size="104" font-weight="800" letter-spacing="-2" fill="#ffffff">Char<tspan fill="#ffb84d">AI</tspan></text>
-<text x="64" y="182" font-size="28" fill="#c3cbf2">Draw any person as data. Direct them with a script.</text>
+<rect width="1280" height="360" fill="@PANEL@"/>
+<rect y="330" width="1280" height="30" fill="@RAISED@"/><rect y="329" width="1280" height="2" fill="@INK@"/>
+<rect x="64" y="40" width="40" height="4" rx="2" fill="@ACCENT@"/>
+<g font-family='@FONT@'>
+<text x="60" y="136" font-size="96" font-weight="600" letter-spacing="-2" fill="@INK@">CharAI</text>
+<text x="64" y="184" font-size="28" font-weight="400" fill="@SEC@">Draw any person as data. Direct them with a script.</text>
 </g>
-<rect x="1" y="1" width="1278" height="358" rx="23" fill="none" stroke="#ffffff" stroke-opacity=".14" stroke-width="2"/>

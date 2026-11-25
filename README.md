@@ -1,5 +1,5 @@
 <p align="center">
-  <picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/header-dark.webp"><img src="docs/img/header-light.webp" alt="CharAI: draw any person as data, direct them with a script" width="1280"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/header-dark.svg"><img src="docs/img/header-light.svg" alt="CharAI: draw any person as data, direct them with a script" width="1280"></picture>
 </p>
 
 <p align="center">
