@@ -1,0 +1,47 @@
+film "Fresh Loaf" 15s
+stage width=1400 ground=600 scale=60
+actor Baker = skin baker at 500
+actor Skye = skin skye at 900 facing left
+
+0    Baker: idle(), mood(proud), face(proud)
+0    Skye: idle(), mood(tired, strength=0.4), face(tired)
+0    cam: cut(to=700, zoom=1.7)
+
+0.8  cam: frame(on=Baker, top=head, bottom=chest, x=0.4, over=0)
+1.0  Baker: face(proud, strength=1.3)
+1.1  Baker: say("Fresh from the oven, still warm!", for=2.2, beats=1)
+1.1  caption: "Fresh from the oven, still warm!", by=Baker, for=2.2
+1.3  Baker: reach(at=Skye, for=1.5)
+
+3.5  cam: frame(on=Skye, top=head, bottom=chest, x=0.6, over=0)
+3.5  Skye: face(tired)
+3.6  Skye: say("It's bread.", for=0.9)
+3.6  caption: "It's bread.", by=Skye, for=1.0
+3.6  Skye: shrug(), look(at=front)
+
+4.8  Skye: face(surprised, strength=0.5), mood(neutral, strength=0)
+5.0  Skye: say("Wait, is that cinnamon?", for=1.9)
+5.0  caption: "Wait, is that cinnamon?", by=Skye, for=1.9
+
+4.0  Baker: face(sad, strength=0.5)
+6.0  Baker: face(surprised, strength=0.6)
+7.1  cam: frame(on=Baker, top=head, bottom=chest, x=0.4, over=0)
+7.1  Baker: face(proud, strength=1.5)
+7.3  Baker: say("Seven spices! My own secret!", for=2.0, beats=1)
+7.3  caption: "Seven spices! My own secret!", by=Baker, for=2.0
+
+9.5  cam: frame(on=Skye, top=head, bottom=chest, x=0.6, over=0)
+9.5  Skye: look(at=front)
+9.5  Skye: face(excited, strength=0.7), mood(happy)
+9.7  Skye: say("Can I have a bite?", for=1.5, beats=1)
+9.7  caption: "Can I have a bite?", by=Skye, for=1.5
+
+9.9  Baker: face(happy, strength=1.2)
+11.4 Skye: face(happy, strength=1.5), mood(happy)
+11.5 Skye: say("Oh, that smells amazing!", for=1.9, beats=1)
+11.5 caption: "Oh, that smells amazing!", by=Skye, for=1.9
+
+13.6 cam: home(over=0)
+13.6 cam: cut(to=700, zoom=1.7)
+13.6 Baker: face(happy, strength=1.3)
+13.8 Skye: cheer()

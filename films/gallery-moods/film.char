@@ -1,0 +1,36 @@
+film "Four Moods" 24s
+stage width=1280 ground=600 scale=56
+actor Tot = skin tot at 90
+actor Baker = skin baker at 270
+actor Vera = skin vera at 600
+
+# one walk, three bodies, four moods. Each body walks out and back; the mood changes at every turn.
+0 cam: cut(to=640, zoom=1)
+0.2  caption: "Happy", for=5
+0.2 Tot: mood(happy), walk(to=350)
+0.2 Baker: mood(happy), walk(to=790)
+0.2 Vera: mood(happy), walk(to=1200)
+
+5.6  caption: "Sad", for=6.2
++0.4 Tot: mood(sad)
++0 Tot: walk(to=90, speed=1.5)
++0.4 Baker: mood(sad)
++0 Baker: walk(to=270, speed=1.5)
++0.4 Vera: mood(sad)
++0 Vera: walk(to=600, speed=1.5)
+
+12.0  caption: "Angry", for=5.2
++0.4 Tot: mood(angry)
++0 Tot: walk(to=350)
++0.4 Baker: mood(angry)
++0 Baker: walk(to=790)
++0.4 Vera: mood(angry)
++0 Vera: walk(to=1200)
+
+17.5  caption: "Scared", for=6
++0.4 Tot: mood(scared)
++0 Tot: walk(to=90, speed=1.3)
++0.4 Baker: mood(scared)
++0 Baker: walk(to=270, speed=1.3)
++0.4 Vera: mood(scared)
++0 Vera: walk(to=600, speed=1.3)

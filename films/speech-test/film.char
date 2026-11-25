@@ -1,0 +1,22 @@
+film "Speech test" 15s
+stage width=3000 ground=600 scale=60
+actor Tot = skin tot at 500
+actor Cap = skin captain at 1300
+actor Vera = skin vera at 2200
+
+# one line each, in two moods, in close-up (head to chest)
+0    cam: frame(on=Tot, top=head, bottom=chest, x=0.4, over=0)
+0.2  Tot: face(happy), mood(happy)
+0.4  Tot: say("Good morning, little one!", for=1.8)
+2.4  Tot: face(sad), mood(sad)
+2.6  Tot: say("Good morning, little one!", for=2.2)
+5.0  cam: frame(on=Cap, top=head, bottom=chest, x=0.4, over=0)
+5.0  Cap: face(happy, strength=1.3), mood(proud)
+5.2  Cap: say("Good morning, little one!", for=1.8, beats=1)
+7.2  Cap: face(angry), mood(angry)
+7.4  Cap: say("Good morning, little one!", for=1.6, beats=1)
+9.4  cam: frame(on=Vera, top=head, bottom=chest, x=0.4, over=0)
+9.5  Vera: face(happy), mood(happy)
+9.7  Vera: say("Good morning, little one!", for=1.9)
+11.8 Vera: face(scared), mood(scared)
+12.0 Vera: say("Good morning, little one!", for=1.5)

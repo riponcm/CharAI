@@ -1,0 +1,36 @@
+film "Ten Actions" 25s
+stage width=1280 ground=600 scale=56
+actor Tot = skin tot at 400
+actor Titan = skin titan at 640
+actor Vera = skin vera at 880 facing left
+
+# a montage: ten catalogue actions, each one a small file of key poses, on three bodies
+0 cam: cut(to=640, zoom=1.1)
+0 Tot: idle()
+0 Titan: idle()
+0 Vera: idle()
+
+0.5  caption: "jumpjoy", for=2
+0.5  Tot: jumpjoy()
+2.7  caption: "salute", for=2
+2.7  Titan: salute()
+4.9  caption: "think", for=2
+4.9  Vera: think()
+7.1  caption: "bow", for=2
+7.1  Tot: bow()
+9.3  caption: "clap", for=2
+9.3  Titan: clap()
+11.5 caption: "shrug", for=2
+11.5 Vera: shrug()
+13.7 caption: "stomp", for=2
+13.7 Tot: stomp()
+15.9 caption: "tantrum", for=2
+15.9 Titan: tantrum()
+18.1 caption: "yawn", for=2
+18.1 Vera: yawn()
+20.3 caption: "jump", for=2
+20.3 Tot: jump(to=520, height=1.4)
+22.5 caption: "cheer, all together", for=3
+22.5 Tot: cheer()
+22.5 Titan: cheer()
+22.5 Vera: cheer()

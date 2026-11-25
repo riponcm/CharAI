@@ -1,0 +1,7 @@
+film "RIG example" 5s
+stage width=1280 ground=640 scale=60
+actor Nora = skin nora at 300
+
+0.2 Nora: wave()
++0.1 Nora: run(to=800)
++0 Nora: jump(to=1000)

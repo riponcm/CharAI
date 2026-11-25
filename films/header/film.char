@@ -1,0 +1,13 @@
+film "CharAI header loop" 7s
+stage width=1280 ground=690 scale=58
+actor Tot = skin tot at 1400 facing left
+actor Tess = skin tess at 1400 facing left
+
+0.0  Tot: run(to=1120, speed=2.5), face(happy)
+1.0  Tot: wave(hand=both)
+1.7  Tot: jump(to=1120)
+3.1  Tot: run(to=1420, speed=2.5)
+0.9  Tess: run(to=840, speed=2.5), face(happy)
+2.2  Tess: wave()
+2.9  Tess: jump(to=840)
+4.5  Tess: run(to=1420, speed=2.5)

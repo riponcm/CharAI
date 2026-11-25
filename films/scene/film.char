@@ -1,0 +1,31 @@
+film "Tot and Captain" 20s
+stage width=1280
+actor Tot = skin tot at 330
+actor Cap = skin captain at 1050 facing left
+
+0    Tot: mood(happy)
+0    Cap: mood(tired), idle()
+0    cam: cut(to=520, zoom=1.6)
+0    Tot: run(to=560, speed=1.1)
+1.6  cam: pan(to=620, over=1)
++0   Tot: stumble()
++0   Tot: fallsit()
++0   Tot: mood(sad, 1.5), face(sad)
++0.3 Tot: cry()
+3.4  cam: pan(to=680, over=1.5), zoom(1.35, over=1.5)
+3.0  Cap: walk(to=840, speed=1.5), look(at=Tot)
++0.2 Cap: face(surprised)
++0.3 Cap: mood(happy, 0.8)
+7.5  cam: pan(to=700, over=1), zoom(1.35, over=1)
++0.2 Cap: sillyjig(times=3)
+9.5  Tot: wipetears(times=3)
+11   Tot: peekaboo()
+11.3 Tot: mood(happy), face(happy)
++0.2 Tot: standup()
+13.8 Tot: jump(to=580, height=1.2), laugh()
++0.2 Tot: jump(to=580, height=1.0)
++0.2 Cap: idle()
+14   Cap: mood(proud, 1.2), face(proud)
+16.5 cam: pan(to=700, over=1), zoom(1.3, over=1)
+17.0 Tot: wave()
+17.2 Cap: wave()

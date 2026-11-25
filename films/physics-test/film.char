@@ -1,0 +1,18 @@
+film "Physics Test" 13s
+set hillside day
+actor Kai = skin kai at 380
+
+# 0-1.8 s: close-up (head to thigh, Kai at 35% of the frame) while a gust streams his hair
+# tufts, scarf, pouch and hem back; they settle as it dies away
+0    cam: cut(to=Kai, zoom=3.4), frame(on=Kai, top=head, bottom=thigh, x=0.35, over=0)
+0    Kai: idle()
+0.2  wind: gust(amount=1.2, over=1.8)
+0.05 cam: follow(Kai, over=0.6)
+1.6  cam: home(over=0.8)
+# bounce on the toes, run (start clip, then the gait), jump, run and skid to a stop, turn, wave
+1.8  Kai: bounce(times=2)
++0   Kai: run(to=620)
++0   Kai: jump(to=820, height=1.2)
++0   Kai: run(to=1120, end=skid)
++0.15 Kai: turn()
++0.05 Kai: wave(hand=both), face(happy)

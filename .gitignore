@@ -1,0 +1,18 @@
+node_modules/
+.char-local.json
+# generated film media and pages (rebuilt by the tools)
+*.mp4
+*.webm
+*.wav
+*.mov
+films/**/index.html
+films/.action-*/
+# review pictures, contact sheets and strips under films/
+films/**/*.png
+# docs/img/ and dist/ are tracked on purpose (nothing above matches them)
+# internal working notes, not published
+ROADMAP.md
+RELEASE-CHECKLIST.md
+# media/, gallery/ and docs/img/ are tracked on purpose (nothing above matches them)
+# the gallery clips are the exception to the *.mp4 rule above
+!media/*.mp4

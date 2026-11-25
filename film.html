@@ -1,0 +1,67 @@
+<!doctype html>
+<!-- film.html: page template for a film folder. tools/check.cjs (and sheet/render) copy it to
+     <film>/index.html, put the film.char text into #film-script and the needed library files into
+     the LIBS slot. Contract: window.seek(t), ?static=1 (no autoplay), ?t=<seconds>, ?debug=1 shows diagnostics. -->
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0b0a10; overflow: hidden; }
+  #stage { position: fixed; inset: 0; }
+  #bar { position: fixed; left: 0; bottom: 0; height: 4px; width: 0; background: #e9c46a; opacity: 0.85; }
+  #msg { position: fixed; left: 12px; top: 12px; right: 12px; font: 14px/1.45 Consolas, monospace; color: #ffd6d0; white-space: pre-wrap; text-shadow: 0 1px 2px #000; }
+  body.static #bar { display: none; }
+</style></head>
+<body>
+<div id="stage"></div><div id="bar"></div><div id="msg"></div>
+<script type="text/plain" id="film-script">__SCRIPT__</script>
+<!-- LIBS -->
+<script>
+(function () {
+  const q = new URLSearchParams(location.search);
+  const isStatic = q.get('static') === '1';
+  if (isStatic) document.body.classList.add('static');
+  const msg = document.getElementById('msg');
+  const src = document.getElementById('film-script').textContent.replace(/<\\\/script/gi, '</script');
+  if (!window.CharScript || !window.CharStage || src.trim() === '__SCRIPT' + '__') {
+    msg.textContent = 'This is the film template. Run: node tools/check.cjs films/<name>  and open films/<name>/index.html';
+    window.seek = function () {};
+    return;
+  }
+  const parsed = CharScript.parse(src);
+  const st = CharStage.mount(document.getElementById('stage'), parsed);
+  const errs = st.diagnostics.filter(d => d.severity === 'error');
+  for (const d of errs) console.warn('line ' + d.line + ': ' + d.message);
+  if (q.get('debug') === '1') msg.textContent = st.diagnostics.map(d => d.severity + ' line ' + d.line + ': ' + d.message).join('\n');
+  const bar = document.getElementById('bar');
+  let cur = 0, playing = !isStatic, t0 = 0;
+  window.duration = st.duration;
+  window.film = st;
+  window.seek = function (t) {
+    cur = Math.max(0, Math.min(st.duration, +t || 0));
+    st.seek(cur);
+    bar.style.width = (100 * cur / st.duration) + '%';
+  };
+  window.seek(q.get('t') !== null ? +q.get('t') : 0);
+  function tick(now) {
+    if (playing) {
+      if (!t0) t0 = now - cur * 1000;
+      let t = (now - t0) / 1000;
+      if (t > st.duration) { t = 0; t0 = now; }
+      window.seek(t);
+    }
+    requestAnimationFrame(tick);
+  }
+  if (!isStatic) requestAnimationFrame(tick);
+  // click or space: play/pause; arrows: step 1 s (shift: 1 frame)
+  const toggle = () => { playing = !playing; t0 = 0; };
+  document.addEventListener('click', toggle);
+  document.addEventListener('keydown', e => {
+    if (e.code === 'Space') { toggle(); e.preventDefault(); }
+    if (e.code === 'ArrowRight' || e.code === 'ArrowLeft') {
+      playing = false;
+      window.seek(cur + (e.code === 'ArrowRight' ? 1 : -1) * (e.shiftKey ? 1 / 24 : 1));
+    }
+  });
+})();
+</script>
+</body></html>

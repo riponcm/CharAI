@@ -1,0 +1,6 @@
+film "RIG recipes" 5s
+stage width=1280 ground=640 scale=60
+actor Gran = skin gran at 200
+
+0.3 Gran: walk(to=520)
++0.1 Gran: wave()

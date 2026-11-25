@@ -1,0 +1,11 @@
+film "Bare stage test" 8s
+stage width=2400 ground=600 scale=68
+actor Kai = skin kai at 160
+actor Baker = skin baker at 300
+
+0.0  Kai: run(to=700)
+0.0  Baker: run(to=840)
++0   Kai: jump(to=900, height=1.2)
++0   Baker: jump(to=1040, height=1.0)
++0.1 Kai: wave(hand=both)
++0.1 Baker: wave()

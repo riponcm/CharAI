@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 290" width="760" height="290" role="img" aria-label="Animation code written (KB)">
+<rect width="760" height="290" rx="10" fill="#1f2937"/>
+<text x="20" y="30" fill="#f3f4f6" font-family="sans-serif" font-size="17" font-weight="bold">Animation code written (KB)</text>
+<text x="20" y="50" fill="#d1d5db" font-family="sans-serif" font-size="12">Orange: style-library workflow. Blue: this engine (script plus new actions).</text>
+<text x="20" y="87" fill="#f3f4f6" font-family="sans-serif" font-size="13">Episode 2, Opus: library</text>
+<rect x="250" y="73" width="457.6" height="20" fill="#f59e0b"/>
+<text x="715.6" y="88" fill="#f3f4f6" font-family="sans-serif" font-size="13">28.6 KB</text>
+<text x="20" y="117" fill="#f3f4f6" font-family="sans-serif" font-size="13">Episode 2, Opus: engine</text>
+<rect x="250" y="103" width="94.4" height="20" fill="#38bdf8"/>
+<text x="352.4" y="118" fill="#f3f4f6" font-family="sans-serif" font-size="13">5.9 KB</text>
+<text x="20" y="147" fill="#f3f4f6" font-family="sans-serif" font-size="13">Episode 2, Sonnet: library</text>
+<rect x="250" y="133" width="465.6" height="20" fill="#f59e0b"/>
+<text x="723.6" y="148" fill="#f3f4f6" font-family="sans-serif" font-size="13">29.1 KB</text>
+<text x="20" y="177" fill="#f3f4f6" font-family="sans-serif" font-size="13">Episode 2, Sonnet: engine</text>
+<rect x="250" y="163" width="100.8" height="20" fill="#38bdf8"/>
+<text x="358.8" y="178" fill="#f3f4f6" font-family="sans-serif" font-size="13">6.3 KB</text>
+<text x="20" y="207" fill="#f3f4f6" font-family="sans-serif" font-size="13">Silhouette, Opus: library</text>
+<rect x="250" y="193" width="441.6" height="20" fill="#f59e0b"/>
+<text x="699.6" y="208" fill="#f3f4f6" font-family="sans-serif" font-size="13">27.6 KB</text>
+<text x="20" y="237" fill="#f3f4f6" font-family="sans-serif" font-size="13">Silhouette, Opus: engine</text>
+<rect x="250" y="223" width="124.8" height="20" fill="#38bdf8"/>
+<text x="382.8" y="238" fill="#f3f4f6" font-family="sans-serif" font-size="13">7.8 KB</text>
+</svg>

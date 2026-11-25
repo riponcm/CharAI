@@ -1,0 +1,3 @@
+// films/lineup/skins/tallwoman.js - a tall thin woman in an ankle-length dress. Numbers only: extends the mannequin.
+(function (g) { (g.CharSkins = g.CharSkins || {}).tallwoman = { name: 'tallwoman', extends: 'mannequin',
+  build: { heads: 7.6, chest: 0.72, waist: 0.52, hips: 0.78, bust: 0.07, arm: 0.095, leg: 0.16, neck: 0.085 }, motion: { weight: 0.1, energy: 0.5 }, parts: { torso: { cover: true, fill: 'dress' }, skirt: { skirt: true, length: 1, flare: 0.25, fill: 'dress', shade: 'dressShade', hem: { fill: 'hemBand', w: 0.12 } } }, palette: { dress: '#7d4a8f', dressShade: '#613671', hemBand: '#e2c35a', suit: '#7d4a8f', suitShade: '#613671', hair: '#a8452a' }, }; })(typeof self !== 'undefined' ? self : this);

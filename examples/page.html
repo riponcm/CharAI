@@ -1,0 +1,39 @@
+<!doctype html>
+<!-- page.html: a page with its own drawn background and a <char-stage> on top. Uses only dist/char.js
+     (run node tools/build.cjs first). Page contract: window.seek(t), ?static=1, ?t=<seconds>.
+     The film text is inline because browsers block fetch() of the src attribute from file:// pages;
+     over http you can write <char-stage src="film.char">. Keep the page's ground line at the script's ground=. -->
+<html><head><meta charset="utf-8"><title>Page with char-stage</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #123; }
+  #scene { position: relative; width: 1280px; height: 720px; overflow: hidden;
+    background: radial-gradient(circle at 20% 25%, #ffd9a0 0 50px, rgba(255,217,160,0) 120px), linear-gradient(#f29b6b, #f7d6a8 62%, #f7d6a8); }
+  #hills { position: absolute; left: 0; right: 0; top: 400px; height: 200px; background: #6a8f5c;
+    clip-path: polygon(0 50%, 25% 15%, 50% 45%, 78% 5%, 100% 40%, 100% 100%, 0 100%); }
+  #ground { position: absolute; left: 0; right: 0; top: 600px; bottom: 0; background: #a98c5e; border-top: 4px solid #7a6240; }
+  char-stage { position: absolute; left: 0; top: 0; }
+</style></head>
+<body>
+<div id="scene"><div id="hills"></div><div id="ground"></div>
+<char-stage id="cs" width="1280" height="720" skins="../skins/mannequin.js ../skins/kai.js ../films/cast/skins/baker.js" loop autoplay>
+<script type="text/plain">
+film "Page" 6s
+stage width=1280 ground=600 scale=68
+actor Kai = skin kai at 120
+actor Baker = skin baker at 300
+0.0 Kai: walk(to=1000)
+0.0 Baker: walk(to=1100)
++0.2 Kai: wave()
+</script>
+</char-stage></div>
+<script src="../dist/char.js"></script>
+<script>
+(function () {
+  const q = new URLSearchParams(location.search), cs = document.getElementById('cs');
+  let want = q.get('t') !== null ? +q.get('t') : 0;
+  window.seek = t => { want = +t || 0; cs.pause(); cs.seek(want); };
+  cs.addEventListener('ready', () => { window.duration = cs.duration; if (q.get('static') === '1' || q.get('t') !== null) { cs.pause(); cs.seek(want); } });
+  if (q.get('static') === '1') cs.removeAttribute('autoplay');
+})();
+</script>
+</body></html>

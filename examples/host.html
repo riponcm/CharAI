@@ -1,0 +1,46 @@
+<!doctype html>
+<!-- host.html: a host page that paints its own scenery and puts the engine's characters on top
+     through Char.mount. The engine draws only the characters, on a transparent layer.
+     Page contract: window.seek(t), ?static=1 (no autoplay), ?t=<seconds>. -->
+<html><head><meta charset="utf-8"><title>Host page</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #123; }
+  #scene { position: relative; width: 1280px; height: 720px; overflow: hidden;
+    /* the host's own scenery: sky, hills, a path under the characters' ground line (y=600) */
+    background:
+      radial-gradient(circle at 80% 22%, #fff3b0 0 40px, rgba(255,243,176,0) 90px),
+      linear-gradient(to bottom, #6cb4e4 0, #cfe8f5 55%, #cfe8f5 80%) ,
+      #cfe8f5; }
+  #hills { position: absolute; left: 0; right: 0; top: 380px; height: 220px; background: #7fae6b;
+    clip-path: polygon(0 60%, 18% 20%, 40% 55%, 62% 10%, 85% 50%, 100% 30%, 100% 100%, 0 100%); }
+  #ground { position: absolute; left: 0; right: 0; top: 600px; bottom: 0; background: #b99a6a; border-top: 4px solid #8a7048; }
+  #chars { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; }
+</style></head>
+<body>
+<div id="scene"><div id="hills"></div><div id="ground"></div><div id="chars"></div></div>
+<script src="../src/rig.js"></script><script src="../src/gait.js"></script><script src="../src/poses.js"></script>
+<script src="../src/clips.js"></script><script src="../src/perform.js"></script><script src="../skins/kai.js"></script>
+<script src="../src/script.js"></script><script src="../src/stage.js"></script>
+<script>
+(function () {
+  const q = new URLSearchParams(location.search);
+  const script = [
+    'film "Host page" 6s',
+    'stage width=1280 ground=600 scale=68',
+    'actor Kai = skin kai at 120',
+    '0.0 Kai: walk(to=1100)',
+    '+0.2 Kai: wave()',
+  ].join('\n');
+  const m = Char.mount(document.getElementById('chars'), { script, skins: CharSkins, width: 1280, height: 720 });
+  let cur = 0, t0 = 0;
+  window.duration = m.duration;
+  window.seek = function (t) { cur = Math.max(0, Math.min(m.duration, +t || 0)); m.seek(cur); };
+  window.seek(q.get('t') !== null ? +q.get('t') : 0);
+  if (q.get('static') !== '1') requestAnimationFrame(function tick(now) {
+    if (!t0) t0 = now;
+    window.seek(((now - t0) / 1000) % m.duration);
+    requestAnimationFrame(tick);
+  });
+})();
+</script>
+</body></html>

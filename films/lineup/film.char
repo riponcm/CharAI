@@ -1,0 +1,27 @@
+film "Line-up" 7s
+stage width=1280 ground=660 scale=40
+actor Tot = skin toddler at 90 scale=1.5
+actor Big = skin bigman at 270 scale=1.25
+actor Tall = skin tallwoman at 470 scale=1.25
+actor Old = skin oldman at 670 scale=1.25
+actor Ath = skin athlete at 880 scale=1.3
+actor Teen = skin teen at 1090 scale=1.2
+
+0.2  Tot: wave(hand=both)
+0.2  Big: wave(hand=both)
+0.2  Tall: wave(hand=both)
+0.2  Old: wave(hand=both)
+0.2  Ath: wave(hand=both)
+0.2  Teen: wave(hand=both)
+2.3  Tot: run(to=150)
+2.3  Big: run(to=330)
+2.3  Tall: run(to=530)
+2.3  Old: run(to=730)
+2.3  Ath: run(to=940)
+2.3  Teen: run(to=1150)
++0.2 Tot: jump(to=210)
++0.2 Big: jump(to=390)
++0.2 Tall: jump(to=590)
++0.2 Old: jump(to=790)
++0.2 Ath: jump(to=1000)
++0.2 Teen: jump(to=1210)

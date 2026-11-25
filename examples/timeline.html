@@ -1,0 +1,33 @@
+<!doctype html>
+<!-- timeline.html: the page owns the clock and drives the characters with seek(t), the pattern Remotion,
+     HyperFrames and GSAP use. Only dist/char.js. Contract: window.seek(t), ?static=1 (no autoplay), ?t=<seconds>. -->
+<html><head><meta charset="utf-8"><title>Timeline host</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #123; }
+  #scene { position: relative; width: 1280px; height: 720px; overflow: hidden; background: linear-gradient(#2b3a67, #8a9bd6 65%, #c9d3f0); }
+  #ground { position: absolute; left: 0; right: 0; top: 600px; bottom: 0; background: #3c4a6b; border-top: 4px solid #232d47; }
+  #chars { position: absolute; left: 0; top: 0; }
+  #clock { position: absolute; right: 16px; top: 12px; font: 20px Consolas, monospace; color: #fff; }
+</style></head>
+<body>
+<div id="scene"><div id="ground"></div><div id="chars"></div><div id="clock"></div></div>
+<script src="../dist/char.js"></script>
+<script src="../skins/kai.js"></script><script src="../skins/mannequin.js"></script><script src="../films/cast/skins/baker.js"></script>
+<script>
+(function () {
+  const q = new URLSearchParams(location.search);
+  const script = ['film "Timeline" 6s', 'stage width=1280 ground=600 scale=68', 'actor Kai = skin kai at 120', 'actor Baker = skin baker at 300',
+    '0.0 Kai: walk(to=1000)', '0.0 Baker: walk(to=1100)', '+0.2 Kai: wave()'].join('\n');
+  const m = Char.mount(document.getElementById('chars'), { script, skins: CharSkins, width: 1280, height: 720 });
+  window.duration = m.duration;
+  // the page's own timeline: any clock works (a requestAnimationFrame loop here)
+  window.seek = function (t) {
+    t = Math.max(0, Math.min(m.duration, +t || 0));
+    m.seek(t);
+    document.getElementById('clock').textContent = t.toFixed(2) + ' s';
+  };
+  window.seek(q.get('t') !== null ? +q.get('t') : 0);
+  if (q.get('static') !== '1') { let t0 = 0; requestAnimationFrame(function tick(now) { if (!t0) t0 = now; window.seek(((now - t0) / 1000) % m.duration); requestAnimationFrame(tick); }); }
+})();
+</script>
+</body></html>

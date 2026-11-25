@@ -1,0 +1,27 @@
+film "Cast line-up" 9s
+stage width=2400 ground=600 scale=56
+actor Tot = skin tot at 110
+actor Gramps = skin gramps at 250
+actor Baker = skin baker at 400
+actor Vera = skin vera at 560
+actor Titan = skin titan at 720
+actor Skye = skin skye at 880
+
+0.3  Tot: wave()
+0.3  Gramps: wave()
+0.3  Baker: wave(hand=both)
+0.3  Vera: wave()
+0.3  Titan: wave(hand=both)
+0.3  Skye: wave()
+2.6  cam: pan(to=900, over=2.4)
+2.6  Tot: run(to=380)
+2.6  Gramps: walk(to=520)
+2.6  Baker: run(to=670)
+2.6  Vera: run(to=830)
+2.6  Titan: run(to=990)
+2.6  Skye: run(to=1150)
++0   Tot: jump(to=450)
++0   Baker: jump(to=780)
++0   Vera: jump(to=960)
++0   Titan: jump(to=1180, height=1.6)
++0   Skye: jump(to=1300)

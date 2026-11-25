@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gallery</title>
+<script>
+// The product name lives here and nowhere else in this file. Change it and reload.
+const PRODUCT_NAME = 'CharAI';
+</script>
+<style>
+:root { --bg:#fbf7f0; --fg:#2a241c; --muted:#6b5f50; --card:#ffffff; --line:#e6dccb; --accent:#a3470f; --sky1:#f4e6d0; --sky2:#efdcc0; --ground:#dcc29c; --gline:#b99a6c; --hill:#e6d1ad; --sun:#f7c97a; }
+@media (prefers-color-scheme: dark) { :root { --bg:#17130f; --fg:#f1e8da; --muted:#b5a893; --card:#221c15; --line:#3a3125; --accent:#f0a46a; } }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+a { color:var(--accent); }
+header, main, footer { max-width:1200px; margin:0 auto; padding-left:16px; padding-right:16px; }
+header { padding-top:48px; padding-bottom:12px; }
+h1 { font-size:clamp(2rem,5vw,3.2rem); margin:0 0 8px; line-height:1.1; }
+.lead { max-width:46em; color:var(--muted); font-size:1.1rem; margin:0; }
+h2 { font-size:1.5rem; margin:40px 0 4px; }
+.sub { color:var(--muted); margin:0 0 16px; max-width:46em; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr)); gap:20px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; }
+video { display:block; width:100%; height:auto; aspect-ratio:16/9; background:var(--sky1); }
+.cap { padding:12px 16px 16px; }
+.cap h3 { margin:0 0 4px; font-size:1.1rem; }
+.cap p { margin:0 0 6px; }
+.meta { color:var(--muted); font-size:.9rem; }
+.backdrop { position:relative; aspect-ratio:16/9; overflow:hidden; background:linear-gradient(var(--sky1),var(--sky2)); }
+.sun { position:absolute; left:12%; top:10%; width:11%; aspect-ratio:1; border-radius:50%; background:var(--sun); opacity:.8; }
+.hill { position:absolute; left:-10%; right:-10%; top:58%; height:30%; background:var(--hill); border-radius:50% 50% 0 0 / 100% 100% 0 0; }
+.floor { position:absolute; left:0; right:0; top:83.33%; bottom:0; background:var(--ground); border-top:3px solid var(--gline); }
+char-stage { position:absolute; inset:0; width:100%; height:100%; }
+.src { font:12px/1.4 ui-monospace, Consolas, monospace; background:var(--bg); padding:10px; border-radius:8px; overflow:auto; max-height:260px; margin:8px 0 0; }
+summary { cursor:pointer; color:var(--accent); }
+.live-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr)); gap:20px; }
+footer { padding-top:32px; padding-bottom:48px; color:var(--muted); font-size:.9rem; }
+</style></head>
+<body>
+<header>
+  <h1><span class="pname"></span> gallery</h1>
+  <p class="lead">Little films about people, made with <span class="pname"></span>, a 2D character animation engine. Every clip below is a short text script: no frames were drawn by hand. The engine draws the characters only; the plain backdrop comes from the render tool or from this page.</p>
+</header>
+<main>
+  <h2>Clips</h2>
+  <p class="sub">Six clips at 1280x720. Press play, or open the gif for a quick look.</p>
+  <div class="grid">
+    <article class="card">
+      <video controls loop playsinline preload="metadata" width="1280" height="720" aria-label="Six very different people in one line-up" muted><source src="../media/cast-lineup.mp4" type="video/mp4"></video>
+      <div class="cap"><h3>Six very different people in one line-up</h3><p>A toddler, a grandfather, a baker, a tall woman, an athlete and a teenager, each drawn from a few numbers and paths, all on one stage.</p>
+        <p class="meta">9 s &middot; written as a short script &middot; <a href="../media/cast-lineup.gif">preview gif</a></p></div>
+    </article>
+    <article class="card">
+      <video controls loop playsinline preload="metadata" width="1280" height="720" aria-label="The toddler and the captain" muted><source src="../media/toddler-and-captain.mp4" type="video/mp4"></video>
+      <div class="cap"><h3>The toddler and the captain</h3><p>A small child runs to an old sea captain, trips, cries, is comforted and plays peekaboo. Camera cuts and zooms are part of the script.</p>
+        <p class="meta">20 s &middot; written as a short script &middot; <a href="../media/toddler-and-captain.gif">preview gif</a></p></div>
+    </article>
+    <article class="card">
+      <video controls loop playsinline preload="metadata" width="1280" height="720" aria-label="The talking scene, with sound"><source src="../media/talk-voice.mp4" type="video/mp4"></video>
+      <div class="cap"><h3>The talking scene, with sound</h3><p>Two characters talk in close-up. The voices are the built-in Windows voices; the lip sync follows their timing. This clip has sound.</p>
+        <p class="meta">21 s &middot; written as a short script &middot; with sound &middot; <a href="../media/talk-voice.gif">preview gif</a></p></div>
+    </article>
+    <article class="card">
+      <video controls loop playsinline preload="metadata" width="1280" height="720" aria-label="The hug, the handover and the scuffle" muted><source src="../media/together.mp4" type="video/mp4"></video>
+      <div class="cap"><h3>The hug, the handover and the scuffle</h3><p>Characters that touch: a child hugs the baker and gets a loaf, two friends embrace, and a playful fight breaks out.</p>
+        <p class="meta">20 s &middot; written as a short script &middot; <a href="../media/together.gif">preview gif</a></p></div>
+    </article>
+    <article class="card">
+      <video controls loop playsinline preload="metadata" width="1280" height="720" aria-label="Four moods, one walk" muted><source src="../media/gallery-moods.mp4" type="video/mp4"></video>
+      <div class="cap"><h3>Four moods, one walk</h3><p>The same walk in happy, sad, angry and scared, on three different bodies. One mood line changes everything.</p>
+        <p class="meta">24 s &middot; written as a short script &middot; <a href="../media/gallery-moods.gif">preview gif</a></p></div>
+    </article>
+    <article class="card">
+      <video controls loop playsinline preload="metadata" width="1280" height="720" aria-label="Ten actions, three bodies" muted><source src="../media/gallery-actions.mp4" type="video/mp4"></video>
+      <div class="cap"><h3>Ten actions, three bodies</h3><p>A montage of catalogue actions: jump for joy, salute, think, bow, clap, shrug, stomp, tantrum, yawn, jump. Each action is one small file of key poses.</p>
+        <p class="meta">25 s &middot; written as a short script &middot; <a href="../media/gallery-actions.gif">preview gif</a></p></div>
+    </article>
+  </div>
+  <h2>Live in your browser</h2>
+  <p class="sub">These three are not videos. The film script is inside the page and <code>&lt;char-stage&gt;</code> from <code>../dist/char.js</code> draws it, over a background that this page paints itself. They need JavaScript.</p>
+  <div class="live-grid">
+    <article class="card live">
+      <div class="backdrop"><div class="sun"></div><div class="hill"></div><div class="floor"></div>
+        <char-stage id="live1" skins="../films/cast/skins/tot.js ../films/cast/skins/baker.js ../films/cast/skins/vera.js" actions="" loop autoplay controls>
+<script type="text/plain">film "Four Moods" 24s
+stage width=1280 ground=600 scale=56
+actor Tot = skin tot at 90
+actor Baker = skin baker at 270
+actor Vera = skin vera at 600
+
+# one walk, three bodies, four moods. Each body walks out and back; the mood changes at every turn.
+0.2  caption: "Happy", for=5
+0.2 Tot: mood(happy), walk(to=350)
+0.2 Baker: mood(happy), walk(to=790)
+0.2 Vera: mood(happy), walk(to=1200)
+
+5.6  caption: "Sad", for=6.2
++0.4 Tot: mood(sad)
++0 Tot: walk(to=90, speed=1.5)
++0.4 Baker: mood(sad)
++0 Baker: walk(to=270, speed=1.5)
++0.4 Vera: mood(sad)
++0 Vera: walk(to=600, speed=1.5)
+
+12.0  caption: "Angry", for=5.2
++0.4 Tot: mood(angry)
++0 Tot: walk(to=350)
++0.4 Baker: mood(angry)
++0 Baker: walk(to=790)
++0.4 Vera: mood(angry)
++0 Vera: walk(to=1200)
+
+17.5  caption: "Scared", for=6
++0.4 Tot: mood(scared)
++0 Tot: walk(to=90, speed=1.3)
++0.4 Baker: mood(scared)
++0 Baker: walk(to=270, speed=1.3)
++0.4 Vera: mood(scared)
++0 Vera: walk(to=600, speed=1.3)</script>
+        </char-stage></div>
+      <div class="cap"><h3>Four moods, live</h3><p>Drawn in your browser from the script below, with the page painting the sun, hills and ground. Nothing here is a video.</p>
+        <details><summary>Show the script</summary><pre class="src"></pre></details></div>
+    </article>
+    <article class="card live">
+      <div class="backdrop"><div class="sun"></div><div class="hill"></div><div class="floor"></div>
+        <char-stage id="live2" skins="../films/cast/skins/tot.js ../films/cast/skins/titan.js ../films/cast/skins/vera.js" actions="../actions/jumpjoy.js ../actions/salute.js ../actions/think.js ../actions/bow.js ../actions/clap.js ../actions/shrug.js ../actions/stomp.js ../actions/tantrum.js ../actions/yawn.js" loop autoplay controls>
+<script type="text/plain">film "Ten Actions" 25s
+stage width=1280 ground=600 scale=56
+actor Tot = skin tot at 400
+actor Titan = skin titan at 640
+actor Vera = skin vera at 880 facing left
+
+# a montage: ten catalogue actions, each one a small file of key poses, on three bodies
+0 Tot: idle()
+0 Titan: idle()
+0 Vera: idle()
+
+0.5  caption: "jumpjoy", for=2
+0.5  Tot: jumpjoy()
+2.7  caption: "salute", for=2
+2.7  Titan: salute()
+4.9  caption: "think", for=2
+4.9  Vera: think()
+7.1  caption: "bow", for=2
+7.1  Tot: bow()
+9.3  caption: "clap", for=2
+9.3  Titan: clap()
+11.5 caption: "shrug", for=2
+11.5 Vera: shrug()
+13.7 caption: "stomp", for=2
+13.7 Tot: stomp()
+15.9 caption: "tantrum", for=2
+15.9 Titan: tantrum()
+18.1 caption: "yawn", for=2
+18.1 Vera: yawn()
+20.3 caption: "jump", for=2
+20.3 Tot: jump(to=520, height=1.4)
+22.5 caption: "cheer, all together", for=3
+22.5 Tot: cheer()
+22.5 Titan: cheer()
+22.5 Vera: cheer()</script>
+        </char-stage></div>
+      <div class="cap"><h3>Ten actions, live</h3><p>The same montage, played by the engine in real time.</p>
+        <details><summary>Show the script</summary><pre class="src"></pre></details></div>
+    </article>
+    <article class="card live">
+      <div class="backdrop"><div class="sun"></div><div class="hill"></div><div class="floor"></div>
+        <char-stage id="live3" skins="../films/cast/skins/tot.js ../films/cast/skins/gramps.js ../films/cast/skins/baker.js ../films/cast/skins/vera.js ../films/cast/skins/titan.js ../films/cast/skins/skye.js" actions="" loop autoplay controls>
+<script type="text/plain">film "Cast line-up" 9s
+stage width=2400 ground=600 scale=56
+actor Tot = skin tot at 110
+actor Gramps = skin gramps at 250
+actor Baker = skin baker at 400
+actor Vera = skin vera at 560
+actor Titan = skin titan at 720
+actor Skye = skin skye at 880
+
+0.3  Tot: wave()
+0.3  Gramps: wave()
+0.3  Baker: wave(hand=both)
+0.3  Vera: wave()
+0.3  Titan: wave(hand=both)
+0.3  Skye: wave()
+2.6  Tot: run(to=380)
+2.6  Gramps: walk(to=520)
+2.6  Baker: run(to=670)
+2.6  Vera: run(to=830)
+2.6  Titan: run(to=990)
+2.6  Skye: run(to=1150)
++0   Tot: jump(to=450)
++0   Baker: jump(to=780)
++0   Vera: jump(to=960)
++0   Titan: jump(to=1180, height=1.6)
++0   Skye: jump(to=1300)</script>
+        </char-stage></div>
+      <div class="cap"><h3>The line-up, live</h3><p>Six bodies, one stage. Drag the slider to scrub: every moment is computed from the time alone.</p>
+        <details><summary>Show the script</summary><pre class="src"></pre></details></div>
+    </article>
+  </div>
+</main>
+<footer>
+  <p><span class="pname"></span> is open source (Apache 2.0). The scripts, skins and actions for every clip are in the <code>films/</code> and <code>actions/</code> folders.</p>
+</footer>
+<script src="../dist/char.js"></script>
+<script>
+document.querySelectorAll('.pname').forEach(e => { e.textContent = PRODUCT_NAME; });
+document.title = PRODUCT_NAME + ' gallery';
+document.querySelectorAll('.live').forEach(c => {
+  const pre = c.querySelector('.src'), s = c.querySelector('char-stage script');
+  if (pre && s) pre.textContent = s.textContent.trim();
+});
+const q = new URLSearchParams(location.search);
+const frozen = q.get('static') === '1' || q.get('t') !== null;
+const stages = Array.from(document.querySelectorAll('char-stage'));
+if (frozen) {
+  // screenshot contract: ?static=1 and ?t=<seconds> freeze every live stage at one moment
+  const t = +(q.get('t') || 0);
+  stages.forEach(el => { el.removeAttribute('autoplay'); const f = () => { el.pause(); el.seek(t); }; el.ready ? f() : el.addEventListener('ready', f); });
+  window.seek = tt => stages.forEach(el => { el.pause(); el.seek(tt); });
+  window.duration = 20;
+} else if ('IntersectionObserver' in window) {
+  // play only what is on screen
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.play(); else e.target.pause(); }), { threshold: 0.2 });
+  stages.forEach(el => io.observe(el));
+}
+</script>
+</body></html>

@@ -1,0 +1,21 @@
+film "Lantern Light" 10s
+set hillside dusk
+actor Tess = skin tess at 230
+actor Ren = skin ren at 1160 facing left
+puppet Pip = bird at branch facing left
+prop lantern at 532
+
+0.0  Tess: walk(to=490), face(happy)
++0.1 Tess: hold(lantern)
+0.4  caption: "Dusk on the hill.", for=2.4
+2.0  Ren: look(at=down), face(sad)
+3.0  cam: pan(to=1040, over=3), zoom(1.2, over=3)
++0.2 Tess: walk(to=860, speed=1.4)
+3.4  Pip: fly(to=1290)
++0.3 Pip: hop(to=1236)
+4.8  Ren: look(at=Tess), face(surprised)
++0.3 Ren: wave()
+5.6  caption: "There you are!", by=Ren, for=2
++0.1 Tess: face(happy)
+7.6  Ren: face(happy)
+8.6  card: "Light finds friends."
