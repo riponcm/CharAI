@@ -1,6 +1,6 @@
 {
   "name": "charai-engine",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "description": "CharAI: open-source 2D character animation engine and agent skill. Draw a human as a data file, direct it with a .char script. Side view, no runtime dependencies, deterministic seek(t).",
   "keywords": [

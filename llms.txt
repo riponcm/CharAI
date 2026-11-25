@@ -1,6 +1,6 @@
 # CharAI
 
-> CharAI is an open-source (Apache 2.0) 2D character animation engine and agent skill. An AI agent, or a person, draws any human as a small data file and directs it with a short `.char` script; the engine supplies skeleton, motion, physics, moods, lip sync and speech, two-character contact and props. Characters only (the host supplies scenery), side view only in this release, no runtime dependencies, one script file `dist/char.js`. Exports MP4, transparent WebM and ProRes, PNG sequence and animated SVG. Version 0.1.0.
+> CharAI is an open-source (Apache 2.0) 2D character animation engine and agent skill. An AI agent, or a person, draws any human as a small data file and directs it with a short `.char` script; the engine supplies skeleton, motion, physics, moods, lip sync and speech, two-character contact and props. Characters only (the host supplies scenery), side view only in this release, no runtime dependencies, one script file `dist/char.js`. Exports MP4, transparent WebM and ProRes, PNG sequence and animated SVG. Version 1.0.0.
 
 ## The skill
 
