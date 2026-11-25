@@ -39,6 +39,7 @@
 - [examples/montage.char](https://github.com/riponcm/CharAI/blob/main/examples/montage.char): Single-file .char example: a line-up of catalogue actions (docs/ACTIONS.md): one actor each, all at once, then another.
 - [examples/moods.char](https://github.com/riponcm/CharAI/blob/main/examples/moods.char): Single-file .char example: the same walk in four moods: mood() colours every move until the next mood line.
 - [examples/page.html](https://github.com/riponcm/CharAI/blob/main/examples/page.html): Host page example (plain HTML).
+- [examples/skill-demo.char](https://github.com/riponcm/CharAI/blob/main/examples/skill-demo.char): Single-file .char example: the film SKILL.md teaches: two actors, a camera move, a mood, speech, a pair action, a prop.
 - [examples/timeline.html](https://github.com/riponcm/CharAI/blob/main/examples/timeline.html): Host page example (plain HTML).
 - [examples/walk-run-jump.char](https://github.com/riponcm/CharAI/blob/main/examples/walk-run-jump.char): Single-file .char example: one actor walks, runs, jumps and skids while the camera pans, zooms and follows.
 

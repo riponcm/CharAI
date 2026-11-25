@@ -1,0 +1,21 @@
+# skill-demo.char - the film SKILL.md teaches: two actors, a camera move, a mood, speech, a pair action, a prop.
+# Run it:  node tools/check.cjs examples/skill-demo.char --timeline
+film "Fresh loaf" 14s
+stage width=1400 ground=600 scale=60
+actor Baker = skin baker at 700 facing left
+actor Tot = skin tot at 150
+prop loaf at 850
+
+0.0  cam: cut(to=500, zoom=1.4)
+0.0  Baker: mood(happy), idle()
+0.0  Tot: face(happy)
+0.5  Tot: run(to=420)
+0.5  Baker: say("Hello, little one!", for=1.8)
+0.5  caption: "Hello, little one!", by=Baker, for=1.8
++0   Baker: give(with=Tot, prop=loaf, speed=2.5)
++0   Tot: face(proud)
+2.0  cam: frame(on=Tot+Baker, over=1.2)
++0.5 Tot: wave()
+9.5  cam: home(over=1.0)
+9.5  cam: pan(to=600, over=1.0)
+11.6 card: "Fresh loaf"

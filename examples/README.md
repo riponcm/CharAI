@@ -18,6 +18,7 @@ node tools/sheet.cjs examples/hello.char sheet.png --n=8  # a contact sheet of 8
 | `hug-and-handover.char` | paired actions `hug` and `give` with a prop | 15 s |
 | `montage.char` | fifteen catalogue actions on five actors | 14 s |
 | `local-action.char` | an action file next to the film: `actions/jig.js` | 9 s |
+| `skill-demo.char` | the film `SKILL.md` teaches: two actors, camera, mood, `say`, `give` with a prop | 14 s |
 
 ## The language in one page
 

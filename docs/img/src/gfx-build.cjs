@@ -1,5 +1,4 @@
 // Builds every readme graphic in docs/img (header SVG, buttons, badges, feature cards, contribute card), light and dark.
-// Colours follow unslop by Damir Sokolovsky (https://github.com/heydamir/unslop), CC BY 4.0.
 // Usage (from the engine folder):  node docs/img/src/gfx-build.cjs [header|buttons|cards|contribute|all] [--only=<slug>]
 // The header is an animated SVG made by tools/svgloop.cjs from films/header. Card backdrops are drawn in a headless browser; the characters come from films/header-* and films/card-*
 // through tools/webploop.cjs, which lays them over the backdrop and writes a 30 fps animated WebP.
@@ -9,7 +8,7 @@ const ROOT = path.join(__dirname, '..', '..', '..'), IMG = path.join(ROOT, 'docs
 const TMP = path.join(require('node:os').tmpdir(), 'charai-gfx'); fs.mkdirSync(TMP, { recursive: true });
 const FONT = 'system-ui,"Segoe UI",Helvetica,Arial,sans-serif';
 
-// Colours follow unslop (Damir Sokolovsky, https://github.com/heydamir/unslop, CC BY 4.0): a warm neutral ramp and one ember accent.
+// Colours: a warm neutral ramp and one ember accent.
 // Only the characters are colourful. No gradients between hues, no glows; depth from surface steps and hairlines.
 const T = {
   light: { panel: '#f7f4ee', card: '#fdfbf7', raised: '#efe9df', ink: '#1f1b16', sec: '#5e554a', mute: '#7b7266', hair: 'rgba(31,27,22,.08)', accent: '#c2410c', onAccent: '#ffffff' },
@@ -55,7 +54,9 @@ async function buttons(browser) {
       fs.writeFileSync(path.join(IMG, `${kind}-${slug}-${th}.svg`), svg);
     }
   };
-  for (const b of BUTTONS) await make('btn', b);
+  // The five btn-*.svg files are the hand-tuned "one strip" set (they join edge to edge in the readme), so they are
+  // not rebuilt here; only the badges are. Pass --rebuild-buttons to overwrite them with the older separate buttons.
+  if (process.argv.includes('--rebuild-buttons')) for (const b of BUTTONS) await make('btn', b);
   for (const b of BADGES) await make('badge', b);
   await p.close();
 }

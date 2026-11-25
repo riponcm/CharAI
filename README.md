@@ -2,13 +2,7 @@
   <picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/header-dark.svg"><img src="docs/img/header-light.svg" alt="CharAI: draw any person as data, direct them with a script" width="1280"></picture>
 </p>
 
-<p align="center">
-  <a href="#get-started-in-three-steps"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-quick-start-dark.svg"><img src="docs/img/btn-quick-start-light.svg" alt="Quick start"></picture></a>
-  <a href="#gallery"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-gallery-dark.svg"><img src="docs/img/btn-gallery-light.svg" alt="Gallery"></picture></a>
-  <a href="#evidence-in-short"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-evidence-dark.svg"><img src="docs/img/btn-evidence-light.svg" alt="Evidence"></picture></a>
-  <a href="docs/"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-docs-dark.svg"><img src="docs/img/btn-docs-light.svg" alt="Docs"></picture></a>
-  <a href="SKILL.md"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-agent-skill-dark.svg"><img src="docs/img/btn-agent-skill-light.svg" alt="Agent skill"></picture></a>
-</p>
+<p align="center"><a href="#get-started-in-three-steps"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-quick-start-dark.svg"><img src="docs/img/btn-quick-start-light.svg" alt="Quick start"></picture></a><a href="#gallery"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-gallery-dark.svg"><img src="docs/img/btn-gallery-light.svg" alt="Gallery"></picture></a><a href="#evidence-in-short"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-evidence-dark.svg"><img src="docs/img/btn-evidence-light.svg" alt="Evidence"></picture></a><a href="docs/"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-docs-dark.svg"><img src="docs/img/btn-docs-light.svg" alt="Docs"></picture></a><a href="SKILL.md"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-agent-skill-dark.svg"><img src="docs/img/btn-agent-skill-light.svg" alt="Agent skill"></picture></a></p>
 
 <p align="center">
   <a href="LICENSE"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/badge-apache-2-dark.svg"><img src="docs/img/badge-apache-2-light.svg" alt="Apache 2.0"></picture></a>

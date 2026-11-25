@@ -6,7 +6,7 @@ Cards and the contribute graphic are animated WebP at 30 fps, looping forever, s
 
 ## Palette
 
-Unslop's warm ramp plus one ember accent. The characters are the only colourful thing; a thin ink ground line they stand on is the signature in every graphic that has characters. No gradients between hues, no radial washes or glows. Type weights 400 and 500 (600 for the wordmark only), sentence case.
+A warm neutral ramp plus one ember accent. The characters are the only colourful thing; a thin ink ground line they stand on is the signature in every graphic that has characters. No gradients between hues, no radial washes or glows. Type weights 400 and 500 (600 for the wordmark only), sentence case.
 
 | Role | Light | Dark |
 | --- | --- | --- |
@@ -21,8 +21,6 @@ Unslop's warm ramp plus one ember accent. The characters are the only colourful 
 
 Radius: panels 20, cards 14, buttons 10, badges 8. Accent use: header short bar above the wordmark; each card a 3 px bar beside its title; contribute a short bar above the title; "Quick start" button fill.
 
-Colours follow unslop by Damir Sokolovsky (https://github.com/heydamir/unslop), CC BY 4.0.
-
 ## Files
 
 | File | Size | Notes |
@@ -33,16 +31,16 @@ Colours follow unslop by Damir Sokolovsky (https://github.com/heydamir/unslop), 
 | `badge-no-dependencies-light.svg` | 870 B | static SVG |
 | `badge-side-view-dark.svg` | 731 B | static SVG |
 | `badge-side-view-light.svg` | 913 B | static SVG |
-| `btn-agent-skill-dark.svg` | 768 B | static SVG |
-| `btn-agent-skill-light.svg` | 950 B | static SVG |
-| `btn-docs-dark.svg` | 749 B | static SVG |
-| `btn-docs-light.svg` | 931 B | static SVG |
-| `btn-evidence-dark.svg` | 729 B | static SVG |
-| `btn-evidence-light.svg` | 911 B | static SVG |
-| `btn-gallery-dark.svg` | 809 B | static SVG |
-| `btn-gallery-light.svg` | 991 B | static SVG |
-| `btn-quick-start-dark.svg` | 651 B | static SVG |
-| `btn-quick-start-light.svg` | 836 B | static SVG |
+| `btn-agent-skill-dark.svg` | 500 B | static SVG, one-strip set |
+| `btn-agent-skill-light.svg` | 494 B | static SVG, one-strip set |
+| `btn-docs-dark.svg` | 547 B | static SVG, one-strip set |
+| `btn-docs-light.svg` | 535 B | static SVG, one-strip set |
+| `btn-evidence-dark.svg` | 559 B | static SVG, one-strip set |
+| `btn-evidence-light.svg` | 547 B | static SVG, one-strip set |
+| `btn-gallery-dark.svg` | 496 B | static SVG, one-strip set |
+| `btn-gallery-light.svg` | 487 B | static SVG, one-strip set |
+| `btn-quick-start-dark.svg` | 406 B | static SVG, one-strip set |
+| `btn-quick-start-light.svg` | 406 B | static SVG, one-strip set |
 | `contribute-dark.webp` | 287.1 KB | 1280x300, 156 frames, 5.20 s loop, 30 fps |
 | `contribute-light.webp` | 344.3 KB | 1280x300, 156 frames, 5.20 s loop, 30 fps |
 | `feature-any-body-from-numbers-dark.webp` | 343.4 KB | animated WebP, 420x260, 30 fps |
@@ -77,13 +75,9 @@ The header is a vector SVG (no downloaded fonts: `system-ui, "Segoe UI", Helveti
 The links are the ones the readme already uses; change them if the targets move.
 
 ```html
-<p align="center">
-  <a href="#quick-start"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-quick-start-dark.svg"><img src="docs/img/btn-quick-start-light.svg" alt="Quick start"></picture></a>
-  <a href="#gallery"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-gallery-dark.svg"><img src="docs/img/btn-gallery-light.svg" alt="Gallery"></picture></a>
-  <a href="#evidence-in-short"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-evidence-dark.svg"><img src="docs/img/btn-evidence-light.svg" alt="Evidence"></picture></a>
-  <a href="docs/"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-docs-dark.svg"><img src="docs/img/btn-docs-light.svg" alt="Docs"></picture></a>
-  <a href="SKILL.md"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-agent-skill-dark.svg"><img src="docs/img/btn-agent-skill-light.svg" alt="Agent skill"></picture></a>
-</p>
+The five buttons join edge to edge into one strip, so keep the five links on one line with no spaces between the tags:
+
+<p align="center"><a href="#get-started-in-three-steps"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-quick-start-dark.svg"><img src="docs/img/btn-quick-start-light.svg" alt="Quick start"></picture></a><a href="#gallery"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-gallery-dark.svg"><img src="docs/img/btn-gallery-light.svg" alt="Gallery"></picture></a><a href="#evidence-in-short"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-evidence-dark.svg"><img src="docs/img/btn-evidence-light.svg" alt="Evidence"></picture></a><a href="docs/"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-docs-dark.svg"><img src="docs/img/btn-docs-light.svg" alt="Docs"></picture></a><a href="SKILL.md"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/img/btn-agent-skill-dark.svg"><img src="docs/img/btn-agent-skill-light.svg" alt="Agent skill"></picture></a></p>
 ```
 
 ### Badge row
