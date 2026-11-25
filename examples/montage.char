@@ -1,0 +1,34 @@
+# montage.char - a line-up of catalogue actions (docs/ACTIONS.md): one actor each, all at once, then another.
+# Run it:  node tools/check.cjs examples/montage.char
+
+film "Montage" 14s
+stage width=2000 ground=600 scale=56
+actor Tot = skin tot at 220
+actor Gramps = skin gramps at 400
+actor Vera = skin vera at 580
+actor Captain = skin captain at 760
+actor Duchess = skin duchess at 940
+
+0.0  cam: cut(to=640, zoom=1.12)
+
+# group 1: the same time on several actors, so they play together
+0.5  Tot: jumpjoy()
+0.5  Gramps: bow()
+0.5  Vera: clap()
+0.5  Captain: salute()
+0.5  Duchess: shrug()
+
+# group 2: face and arms actions
+5.0  Tot: dance()
+5.0  Gramps: think()
+5.0  Vera: fistpump()
+5.0  Captain: handsonhips()
+5.0  Duchess: facepalm()
+
+# group 3: a finish
+10.0 Tot: hi()
+10.0 Gramps: thumbsup()
+10.0 Vera: wave(hand=both)
+10.0 Captain: yawn()
+10.0 Duchess: bow()
+12.5 caption: "any action file works on any skin", for=1.5

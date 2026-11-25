@@ -1,5 +1,5 @@
 // Render a film folder to an MP4 (1280x720, H.264) with ffmpeg (must be on PATH).
-// Usage: node tools/render.cjs <film dir> <out.mp4> [--fps=24] [--from=0] [--to=<end>] [--pages=1]
+// Usage: node tools/render.cjs <film dir | file.char> <out.mp4> [--fps=24] [--from=0] [--to=<end>] [--pages=1]
 // --bg=warm (or a #rrggbb sky colour) paints a plain backdrop with a ground line under the characters, for gallery clips.
 // --crf=<n> sets the H.264 quality (default 18). Without --bg the film looks as before.
 // Uses the same headless browser setup as tools/shot.cjs; all frames come from one browser session
@@ -17,20 +17,37 @@ function findPuppeteer() {
 }
 const PUPPETEER = findPuppeteer();
 
-function browserPath() {
-  if (process.env.BROWSER_PATH) return process.env.BROWSER_PATH;
+// Every installed browser worth trying, in order: BROWSER_PATH first, then Chrome and Edge in
+// their usual places on Windows, macOS and Linux.
+function browserCandidates() {
+  const pf = process.env.PROGRAMFILES || 'C:/Program Files', pf86 = process.env['PROGRAMFILES(X86)'] || 'C:/Program Files (x86)';
   const c = [
-    path.join(process.env['PROGRAMFILES(X86)'] || 'C:/Program Files (x86)', 'Microsoft/Edge/Application/msedge.exe'),
-    path.join(process.env.PROGRAMFILES || 'C:/Program Files', 'Google/Chrome/Application/chrome.exe'),
-    path.join(process.env.PROGRAMFILES || 'C:/Program Files', 'Microsoft/Edge/Application/msedge.exe'),
+    process.env.BROWSER_PATH,
+    path.join(pf, 'Google/Chrome/Application/chrome.exe'),
+    path.join(pf86, 'Google/Chrome/Application/chrome.exe'),
+    path.join(pf86, 'Microsoft/Edge/Application/msedge.exe'),
+    path.join(pf, 'Microsoft/Edge/Application/msedge.exe'),
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
+    '/usr/bin/google-chrome', '/usr/bin/chromium', '/usr/bin/chromium-browser', '/usr/bin/microsoft-edge',
   ];
-  const found = c.find(p => fs.existsSync(p));
+  return [...new Set(c.filter(p => p && fs.existsSync(p)))];
+}
+function browserPath() {
+  const found = browserCandidates()[0];
   if (!found) throw Error('No Chrome/Edge found; set BROWSER_PATH.');
   return found;
 }
-function launch() {
+// Tries each browser in turn, so one that is installed but will not start does not stop the tools.
+async function launch() {
   const puppeteer = require(PUPPETEER);
-  return puppeteer.launch({ executablePath: browserPath(), headless: true, args: ['--enable-unsafe-swiftshader', '--allow-file-access-from-files'] });
+  const tried = [];
+  for (const executablePath of browserCandidates()) {
+    try {
+      return await puppeteer.launch({ executablePath, headless: true, args: ['--enable-unsafe-swiftshader', '--allow-file-access-from-files'] });
+    } catch (e) { tried.push(executablePath + ': ' + String(e.message || e).split('\n')[0]); }
+  }
+  throw Error(tried.length ? 'No browser would start. Tried:\n  ' + tried.join('\n  ') + '\nSet BROWSER_PATH to a working Chrome or Edge.' : 'No Chrome/Edge found; set BROWSER_PATH.');
 }
 module.exports = { launch, browserPath };
 
@@ -59,7 +76,7 @@ if (require.main === module) (async () => {
   const pos = args.filter(a => !a.startsWith('--'));
   const opt = Object.fromEntries(args.filter(a => a.startsWith('--')).map(a => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return [m[1], m[2] ?? true]; }));
   const [dir, out] = pos;
-  if (!dir || !out) { console.error('usage: node tools/render.cjs <film dir> <out.mp4> [--fps=24] [--from=0] [--to=<end>] [--pages=1] [--bg=warm|#rrggbb] [--crf=18]'); process.exit(2); }
+  if (!dir || !out) { console.error('usage: node tools/render.cjs <film dir | file.char> <out.mp4> [--fps=24] [--from=0] [--to=<end>] [--pages=1] [--bg=warm|#rrggbb] [--crf=18]'); process.exit(2); }
   const fps = +(opt.fps || 24), pages = Math.max(1, +(opt.pages || 1));
   const started = Date.now();
   const b = build(dir);

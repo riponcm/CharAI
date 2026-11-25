@@ -2,10 +2,37 @@
   "name": "charai-engine",
   "version": "0.1.0",
   "private": true,
-  "description": "CharAI: 2D character animation engine, characters only, deterministic seek(t)",
+  "description": "CharAI: open-source 2D character animation engine and agent skill. Draw a human as a data file, direct it with a .char script. Side view, no runtime dependencies, deterministic seek(t).",
+  "keywords": [
+    "2d-animation",
+    "character-animation",
+    "animation-engine",
+    "agent-skill",
+    "claude-code",
+    "claude-code-skill",
+    "ai-agents",
+    "text-to-animation",
+    "svg-animation",
+    "lip-sync",
+    "skeletal-animation",
+    "deterministic",
+    "web-component",
+    "hyperframes",
+    "remotion",
+    "gsap"
+  ],
+  "homepage": "https://riponcm.github.io/CharAI/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riponcm/CharAI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/riponcm/CharAI/issues"
+  },
   "scripts": {
     "build": "node tools/build.cjs",
-    "test": "node --test tests/*.cjs"
+    "test": "node --test tests/*.cjs",
+    "llms": "node tools/llms.cjs"
   },
   "devDependencies": {
     "puppeteer-core": "^24.0.0"

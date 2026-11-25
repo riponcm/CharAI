@@ -1,0 +1,27 @@
+# walk-run-jump.char - one actor walks, runs, jumps and skids while the camera pans, zooms and follows.
+# Run it:  node tools/check.cjs examples/walk-run-jump.char --timeline
+
+film "Walk, run, jump" 13s
+set hillside
+actor Kai = skin kai at 300
+
+# the camera: cut jumps to a place at once, zoom(1) is the whole frame
+0.0  cam: cut(to=520, zoom=1)
+
+# body moves chain with +0 (start the moment the previous one ends)
+0.0  Kai: walk(to=560)
++0   Kai: run(to=900)
++0   Kai: jump(to=1080, height=1.2)
++0   Kai: run(to=1420, end=skid)
++0.2 Kai: bounce(times=2)
+
+# the camera has its own channels: follow keeps Kai centred, zoom closes in
+1.5  cam: follow(Kai, over=1)
+5.0  cam: zoom(1.5, over=1.5)
+9.5  cam: zoom(1, over=1.5)
+10.5 cam: pan(to=1300, over=1.5)
+
+# a caption names the move; an arms action runs together with the body
+1.0  caption: "walk", for=1.5
+4.0  caption: "run", for=1.5
+8.0  caption: "jump, then skid", for=2

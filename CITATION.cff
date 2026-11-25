@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use CharAI, please cite it as below."
+title: "CharAI: 2D character animation engine and agent skill"
+abstract: "An animation engine plus an agent skill. An AI agent or a person draws any human as a small data file and directs it with a short .char script. Characters only, side view only."
+type: software
+version: 0.1.0
+license: Apache-2.0
+repository-code: "https://github.com/riponcm/CharAI"
+url: "https://riponcm.github.io/CharAI/"
+authors:
+  - name: "CharAI contributors"
+keywords:
+  - 2D character animation
+  - agent skill
+  - SVG animation
+  - lip sync

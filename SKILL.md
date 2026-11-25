@@ -1,6 +1,6 @@
 ---
 name: charai
-description: CharAI draws and animates 2D side-view cartoon characters with a deterministic engine (seek(t) gives the same frame in any order). Use it when you must design a character as a data file, write a short animated film as a text script (walk, run, jump, emotions, speech with lip sync, hugs, props), add a new action, or place animated characters over another tool's scenery. Characters only; no scenery, no 3D, side view only.
+description: CharAI is a 2D character animation engine and agent skill that draws and animates side-view cartoon people with a deterministic engine (seek(t) gives the same frame in any order). Use it to design a character as a data file, write a short animated film as a text .char script (walk, run, jump, emotions, speech with lip sync, hugs, props), add a new action, export video or animated SVG, or place animated characters over another tool's scenery. Characters only; no scenery, no 3D, side view only.
 ---
 
 # CharAI: where to start

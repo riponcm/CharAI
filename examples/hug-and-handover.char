@@ -1,0 +1,31 @@
+# hug-and-handover.char - a toddler runs to an adult for a hug; the adult hands over a loaf.
+# Paired actions (hug, give, handshake...) name a partner with with=; see docs/PAIRS.md.
+# Run it:  node tools/check.cjs examples/hug-and-handover.char --timeline
+
+film "Hug and loaf" 15s
+stage width=1400 ground=600 scale=60
+actor Tot = skin tot at 150
+actor Baker = skin baker at 700 facing left
+# a prop with no "at" appears when first held; this one lies at 800
+prop loaf at 850
+
+0.0  cam: cut(to=500, zoom=1.4)
+0.0  Tot: mood(happy), face(happy)
+0.0  Baker: mood(happy), idle()
+
+# Tot runs over, then hugs: one line drives both actors
+0.5  Tot: run(to=420)
++0   Tot: hug(with=Baker, speed=2.5)
+
+# close the camera on the pair (on=A+B keeps both whole)
+2.0  cam: frame(on=Tot+Baker, over=1.2)
+
+# the handover: Baker gives the loaf. The line occupies both actors.
++0   Baker: give(with=Tot, prop=loaf, speed=2.5)
++0   Tot: face(proud)
+
+# pull back; +0.2 waves start after each actor's previous line has ended
+12.2 cam: home(over=1.0)
+12.2 cam: pan(to=600, over=1.0)
++0.2 Tot: wave()
++0.2 Baker: wave()

@@ -1,0 +1,44 @@
+# CharAI
+
+> CharAI is an open-source (Apache 2.0) 2D character animation engine and agent skill. An AI agent, or a person, draws any human as a small data file and directs it with a short `.char` script; the engine supplies skeleton, motion, physics, moods, lip sync and speech, two-character contact and props. Characters only (the host supplies scenery), side view only in this release, no runtime dependencies, one script file `dist/char.js`. Exports MP4, transparent WebM and ProRes, PNG sequence and animated SVG. Version 0.1.0.
+
+## The skill
+
+- [SKILL.md](https://github.com/riponcm/CharAI/blob/main/SKILL.md): Start here: which document to read for each of the three jobs (draw a character, write a film, add an action).
+- [README.md](https://github.com/riponcm/CharAI/blob/main/README.md): What CharAI is, the .char script, install as an agent skill, FAQ.
+- [AGENTS.md](https://github.com/riponcm/CharAI/blob/main/AGENTS.md): Rules and commands for coding agents working in this repository.
+
+## Documents
+
+- [docs/CHARACTER.md](https://github.com/riponcm/CharAI/blob/main/docs/CHARACTER.md): Draw a character: one skin file of numbers plus a few SVG paths.
+- [docs/RIG.md](https://github.com/riponcm/CharAI/blob/main/docs/RIG.md): The skin contract: every field and default.
+- [docs/AUTHORING.md](https://github.com/riponcm/CharAI/blob/main/docs/AUTHORING.md): Write a film as a .char script: actors, actions, camera, captions.
+- [docs/ACTIONS.md](https://github.com/riponcm/CharAI/blob/main/docs/ACTIONS.md): Action catalogue, moods, and how to write a new action.
+- [docs/SPEECH.md](https://github.com/riponcm/CharAI/blob/main/docs/SPEECH.md): Faces, expressions, speech and lip sync.
+- [docs/PAIRS.md](https://github.com/riponcm/CharAI/blob/main/docs/PAIRS.md): Two-character actions: hug, handshake, shove, hand over.
+- [docs/PROPS.md](https://github.com/riponcm/CharAI/blob/main/docs/PROPS.md): Props: pick up, carry, throw, sit on, lean on.
+- [docs/HOSTS.md](https://github.com/riponcm/CharAI/blob/main/docs/HOSTS.md): Use CharAI from a web page, <char-stage>, HyperFrames, Remotion, GSAP; video and SVG export.
+- [docs/VOICE-WINDOWS.md](https://github.com/riponcm/CharAI/blob/main/docs/VOICE-WINDOWS.md): Make a voice track with the built-in Windows voices.
+
+## Evidence and limits
+
+- [docs/EVIDENCE.md](https://github.com/riponcm/CharAI/blob/main/docs/EVIDENCE.md): Measured token and time costs, including a comparison CharAI lost.
+- [docs/KNOWN-ISSUES.md](https://github.com/riponcm/CharAI/blob/main/docs/KNOWN-ISSUES.md): What is missing, wrong or untested in this release.
+
+## Examples
+
+- [examples/README.md](https://github.com/riponcm/CharAI/blob/main/examples/README.md): Index of the examples and a one-page tour of the .char language.
+- [examples/conversation.char](https://github.com/riponcm/CharAI/blob/main/examples/conversation.char): Single-file .char example: two people talk: say() speaks a line, caption "by=" draws the speech bubble.
+- [examples/hello.char](https://github.com/riponcm/CharAI/blob/main/examples/hello.char): Single-file .char example: the smallest film: one actor walks in, waves and says hello.
+- [examples/host.html](https://github.com/riponcm/CharAI/blob/main/examples/host.html): Host page example (plain HTML).
+- [examples/hug-and-handover.char](https://github.com/riponcm/CharAI/blob/main/examples/hug-and-handover.char): Single-file .char example: a toddler runs to an adult for a hug; the adult hands over a loaf.
+- [examples/local-action.char](https://github.com/riponcm/CharAI/blob/main/examples/local-action.char): Single-file .char example: uses an action file kept next to the film: examples/actions/jig.js.
+- [examples/montage.char](https://github.com/riponcm/CharAI/blob/main/examples/montage.char): Single-file .char example: a line-up of catalogue actions (docs/ACTIONS.md): one actor each, all at once, then another.
+- [examples/moods.char](https://github.com/riponcm/CharAI/blob/main/examples/moods.char): Single-file .char example: the same walk in four moods: mood() colours every move until the next mood line.
+- [examples/page.html](https://github.com/riponcm/CharAI/blob/main/examples/page.html): Host page example (plain HTML).
+- [examples/timeline.html](https://github.com/riponcm/CharAI/blob/main/examples/timeline.html): Host page example (plain HTML).
+- [examples/walk-run-jump.char](https://github.com/riponcm/CharAI/blob/main/examples/walk-run-jump.char): Single-file .char example: one actor walks, runs, jumps and skids while the camera pans, zooms and follows.
+
+## Optional
+
+- [gallery/index.html](https://github.com/riponcm/CharAI/blob/main/gallery/index.html): All preview clips on one page.

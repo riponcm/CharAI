@@ -16,3 +16,13 @@ RELEASE-CHECKLIST.md
 # media/, gallery/ and docs/img/ are tracked on purpose (nothing above matches them)
 # the gallery clips are the exception to the *.mp4 rule above
 !media/*.mp4
+# pages generated next to single-file .char examples (rebuilt by tools/check.cjs)
+examples/conversation.html
+examples/hello.html
+examples/hug-and-handover.html
+examples/local-action.html
+examples/montage.html
+examples/moods.html
+examples/walk-run-jump.html
+# owner's notes
+docs/SEO-NOTES.md

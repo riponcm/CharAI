@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "CharAI script",
+  "scopeName": "source.char",
+  "fileTypes": ["char"],
+  "patterns": [
+    { "name": "comment.line.number-sign.char", "match": "#.*$" },
+    { "name": "string.quoted.double.char", "begin": "\"", "end": "\"" },
+    { "name": "keyword.control.header.char", "match": "^\s*(film|set|stage|actor|puppet|prop)\b" },
+    { "name": "constant.numeric.time.char", "match": "^\s*\+?\d+(\.\d+)?(?=\s)" },
+    { "name": "entity.name.tag.target.char", "match": "^\s*(?:\+?\d+(?:\.\d+)?\s+)?[A-Za-z_][\w]*(?=\s*:)" },
+    { "name": "entity.name.function.call.char", "match": "\b[a-z_][\w]*(?=\()" },
+    { "name": "variable.parameter.char", "match": "\b[a-z_]\w*(?==)" },
+    { "name": "constant.numeric.char", "match": "-?\b\d+(\.\d+)?s?\b" }
+  ]
+}

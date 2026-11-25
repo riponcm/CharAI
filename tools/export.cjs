@@ -1,5 +1,5 @@
 // Export a film with a transparent background (characters only, no scenery).
-// Usage: node tools/export.cjs films/<name> <out> --format=png|webm|mov [--fps=30] [--w=1280] [--h=720] [--from=0] [--to=<end>]
+// Usage: node tools/export.cjs films/<name> | file.char <out> --format=png|webm|mov [--fps=30] [--w=1280] [--h=720] [--from=0] [--to=<end>]
 //   png : <out> is a folder of frame_00001.png ...   webm : VP9 with alpha (yuva420p)   mov : ProRes 4444 with alpha (yuva444p10le)
 // A film with a `set` line draws its own scenery; only a bare-stage film is fully transparent.
 const fs = require('node:fs'), path = require('node:path'), url = require('node:url'), { spawn } = require('node:child_process');
@@ -11,7 +11,7 @@ const { launch } = require('./render.cjs');
   const pos = args.filter(a => !a.startsWith('--'));
   const opt = Object.fromEntries(args.filter(a => a.startsWith('--')).map(a => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return [m[1], m[2] ?? true]; }));
   const [dir, out] = pos, format = opt.format || 'png';
-  if (!dir || !out || !['png', 'webm', 'mov'].includes(format)) { console.error('usage: node tools/export.cjs films/<name> <out> --format=png|webm|mov [--fps=30] [--w=1280] [--h=720] [--from=0] [--to=<end>]'); process.exit(2); }
+  if (!dir || !out || !['png', 'webm', 'mov'].includes(format)) { console.error('usage: node tools/export.cjs films/<name> | file.char <out> --format=png|webm|mov [--fps=30] [--w=1280] [--h=720] [--from=0] [--to=<end>]'); process.exit(2); }
   const fps = +(opt.fps || 30), W = +(opt.w || 1280), H = +(opt.h || 720);
   const b = build(dir);
   const browser = await launch();

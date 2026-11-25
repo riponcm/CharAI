@@ -1,0 +1,19 @@
+# hello.char - the smallest film: one actor walks in, waves and says hello.
+# Run it:  node tools/check.cjs examples/hello.char     (then open examples/hello.html)
+# More:    node tools/render.cjs examples/hello.char hello.mp4
+
+# header: the title and length, a scenery set, and the cast
+film "Hello" 8s
+set hillside
+actor Tess = skin tess at 640
+
+# a timed line is  <seconds> <who>: action(args)
+# enter() walks Tess in from off screen to her "at" place (700)
+0.0  Tess: enter(from=left, speed=2), face(happy)
+
+# +0.2 means "0.2 s after Tess's previous line has finished"; the caption has its own absolute time
++0.2 Tess: wave()
+4.1  caption: "Hello!", by=Tess, for=1.8
+
+# a card fades a title over the whole frame at the end
+6.0  card: "The End"

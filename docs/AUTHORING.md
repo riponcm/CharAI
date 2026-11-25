@@ -3,6 +3,12 @@
 A film is a folder with one script, `film.char`. CharAI draws the set, the actors, the
 camera and the text from it. You write what happens and when; you never draw frames.
 
+**A script is one `.char` file or a film folder.** A single file is the quickest way to start:
+`node tools/check.cjs examples/hello.char` (also `render.cjs`, `sheet.cjs`, `export.cjs`). Its own
+folder plays the film folder: `skins/`, `actions/`, `props/`, `lines/` next to it win over the shared ones,
+and the page is written next to it as `<name>.html`. A folder with `film.char` works as before
+(page `index.html`). Seven runnable examples, one idea each, are in `examples/` (see `examples/README.md`).
+
 ```
 films/<name>/film.char        the script (required)
 films/<name>/skins|sets|puppets|props/*.js   your own library files (optional; they win over shared ones)

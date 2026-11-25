@@ -1,0 +1,14 @@
+# local-action.char - uses an action file kept next to the film: examples/actions/jig.js.
+# A film's own actions/ folder is searched before the shared one, so you can add or replace moves.
+# Run it:  node tools/check.cjs examples/local-action.char
+
+film "A local jig" 9s
+set hillside
+actor Tess = skin tess at 500
+
+# jig() does not exist in the shared actions/: it comes from examples/actions/jig.js
+0.0  cam: cut(to=500, zoom=1.8)
+0.0  Tess: face(happy)
+0.5  Tess: jig(times=6)
++0.3 Tess: wave()
+5.5  caption: "jig() lives in examples/actions/jig.js", for=3

@@ -2,30 +2,8 @@
 // Usage: node tools/shot.cjs <page.html> <out.png> [--t=1.25] [--w=1200] [--h=800] [--q=extra=query] [--full]
 // The page must expose window.seek(seconds) and honour ?static=1 (no autoplay).
 const fs = require('node:fs'), path = require('node:path'), url = require('node:url');
-// puppeteer-core lookup, in order: local node_modules, env CHAR_PUPPETEER, "puppeteer" path in untracked .char-local.json
-function findPuppeteer() {
-  try { return require.resolve('puppeteer-core'); } catch (e) { /* not installed locally */ }
-  if (process.env.CHAR_PUPPETEER) return process.env.CHAR_PUPPETEER;
-  try {
-    const p = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '.char-local.json'), 'utf8')).puppeteer;
-    if (p) return p;
-  } catch (e) { /* no local file */ }
-  throw Error('puppeteer-core not found. Run "npm install" in the engine folder (or set CHAR_PUPPETEER, or "puppeteer" in .char-local.json).');
-}
-const PUPPETEER = findPuppeteer();
-const puppeteer = require(PUPPETEER);
-
-function browserPath() {
-  if (process.env.BROWSER_PATH) return process.env.BROWSER_PATH;
-  const c = [
-    path.join(process.env['PROGRAMFILES(X86)'] || 'C:/Program Files (x86)', 'Microsoft/Edge/Application/msedge.exe'),
-    path.join(process.env.PROGRAMFILES || 'C:/Program Files', 'Google/Chrome/Application/chrome.exe'),
-    path.join(process.env.PROGRAMFILES || 'C:/Program Files', 'Microsoft/Edge/Application/msedge.exe'),
-  ];
-  const found = c.find(p => fs.existsSync(p));
-  if (!found) throw Error('No Chrome/Edge found; set BROWSER_PATH.');
-  return found;
-}
+// the browser launch (puppeteer lookup, Chrome or Edge with fallback) is shared with the other tools
+const { launch } = require('./render.cjs');
 
 (async () => {
   const [page, out, ...rest] = process.argv.slice(2);
@@ -34,7 +12,7 @@ function browserPath() {
   const w = +(opt.w || 1200), h = +(opt.h || 800), t = opt.t !== undefined ? +opt.t : null;
   const base = url.pathToFileURL(path.resolve(page)).href;
   const target = base + '?static=1' + (t !== null ? '&t=' + t : '') + (opt.q ? '&' + opt.q : '');
-  const browser = await puppeteer.launch({ executablePath: browserPath(), headless: true, args: ['--enable-unsafe-swiftshader', '--allow-file-access-from-files'] });
+  const browser = await launch();
   try {
     const p = await browser.newPage();
     const errors = [];

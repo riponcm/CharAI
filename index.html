@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CharAI: 2D character animation engine and AI agent skill</title>
+<meta name="description" content="CharAI is an open-source 2D character animation engine and agent skill. An AI agent draws a human as a small data file and directs it with a short .char script. Side view, Apache 2.0.">
+<link rel="canonical" href="https://riponcm.github.io/CharAI/">
+<meta property="og:type" content="website"><meta property="og:title" content="CharAI: 2D character animation engine and AI agent skill">
+<meta property="og:description" content="Draw any person as data, direct them with a script. Open source, Apache 2.0, side view, no runtime dependencies.">
+<meta property="og:url" content="https://riponcm.github.io/CharAI/"><meta property="og:image" content="https://riponcm.github.io/CharAI/docs/img/social-preview.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="CharAI: 2D character animation engine and AI agent skill">
+<meta name="twitter:description" content="Draw any person as data, direct them with a script. Open source, Apache 2.0."><meta name="twitter:image" content="https://riponcm.github.io/CharAI/docs/img/social-preview.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"CharAI","description":"Open-source 2D character animation engine and agent skill. An AI agent or a person draws any human as a small data file and directs it with a short .char script. Characters only, side view only.","codeRepository":"https://github.com/riponcm/CharAI","url":"https://riponcm.github.io/CharAI/","license":"https://www.apache.org/licenses/LICENSE-2.0","programmingLanguage":"JavaScript","runtimePlatform":"Node.js 18 or newer; web browser","version":"0.1.0","keywords":"2D character animation, agent skill, Claude Code skill, text to animation, SVG animation, lip sync, skeletal rig, .char script"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is CharAI?","acceptedAnswer":{"@type":"Answer","text":"CharAI is an open-source 2D character animation engine and agent skill. An AI agent or a person draws any human as a small skin data file and directs it with a short .char script; the engine supplies skeleton, motion, physics, moods, lip sync, two-character contact and props."}},{"@type":"Question","name":"How do I animate a character with Claude Code?","acceptedAnswer":{"@type":"Answer","text":"Put this repository in .claude/skills/charai/ and ask Claude Code to draw a character or write a film. It reads SKILL.md, follows the document for the job, then loops: write, run the check (node tools/check.cjs films/x), look at the picture, fix."}},{"@type":"Question","name":"Does it work with HyperFrames, Remotion or GSAP?","acceptedAnswer":{"@type":"Answer","text":"The frame is a pure function of time (seek(t)), the contract those timelines use, and docs/HOSTS.md has a snippet for each. Those three snippets are untested; HyperFrames is \"snippet provided, not yet tested\". Two plain-HTML host examples in examples/ are tested."}},{"@type":"Question","name":"How does it compare with Lemo-Opuscar?","acceptedAnswer":{"@type":"Answer","text":"Lemo-Opuscar is a style library for code-made films. On two 30 s episodes on Sonnet, CharAI used 425,057 tokens against 667,202; on a 30 s silhouette film on Opus it lost, at 391,611 against 318,987, and looked worse. These are single runs, and CharAI is meant to complement style libraries as their character layer."}},{"@type":"Question","name":"Which models built it?","acceptedAnswer":{"@type":"Answer","text":"It was built with Claude Code. Claude Fable 5.2 was architect and reviewer, Claude Opus 5.5 wrote the engine code, and Claude Sonnet wrote characters, actions, scenes, tools and packaging from the documents alone. Only Claude models have been tried."}},{"@type":"Question","name":"What does it cost in tokens?","acceptedAnswer":{"@type":"Answer","text":"Claude Sonnet wrote a character in about 41,800 tokens, an action in about 8,200, and a 20 s two-character scene in 98,844. Each figure is one run; see docs/EVIDENCE.md."}},{"@type":"Question","name":"What can't it do?","acceptedAnswer":{"@type":"Answer","text":"Side view only (no three-quarter or front view), flat cartoon styles, no scenery, no 3D, simple hands, and spring physics for hair and cloth rather than simulation. Lip sync matches the speech but is not polished. Known faults are in docs/KNOWN-ISSUES.md."}},{"@type":"Question","name":"Does it need an artist or motion capture?","acceptedAnswer":{"@type":"Answer","text":"No. The agent writes a skin as numbers plus a few SVG paths, and motion comes from the engine's actions, which are a few key poses each. There is no library of ready-made characters; a few worked examples are in skins/."}},{"@type":"Question","name":"What licence is it under?","acceptedAnswer":{"@type":"Answer","text":"Apache License 2.0; see LICENSE and NOTICE. It has no runtime dependencies."}},{"@type":"Question","name":"How do I add a new action?","acceptedAnswer":{"@type":"Answer","text":"Write a small file of key poses in body terms, register it in CharActions, and check it with node tools/actioncheck.cjs actions/x.js. See it with node tools/action.cjs x out.png. The format is in docs/ACTIONS.md."}}]}</script>
+<style>
+:root{--bg:#fbf8f3;--fg:#2a2420;--mut:#6a5f56;--card:#fff;--line:#e4dccf;--acc:#b4531f}
+@media (prefers-color-scheme:dark){:root{--bg:#1c1816;--fg:#f0e8df;--mut:#b5a99d;--card:#26211e;--line:#3a332e;--acc:#f0a070}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:860px;margin:0 auto;padding:0 16px 48px}a{color:var(--acc)}
+header img{width:100%;height:auto;display:block;margin-top:16px;border-radius:8px}
+h1{font-size:1.9rem;line-height:1.2;margin:.8em 0 .3em}h2{font-size:1.3rem;margin:1.8em 0 .5em}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:0 .3em;font-size:.9em}
+nav{display:flex;flex-wrap:wrap;gap:8px 16px;margin:1em 0}nav a{font-weight:600}
+.clips{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.clips img{width:100%;height:auto;border-radius:6px;display:block}
+ul{padding-left:1.2em}details{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5em 1em;margin:.5em 0}summary{cursor:pointer;font-weight:600}
+footer{color:var(--mut);font-size:.9rem;margin-top:2em}
+</style></head><body><main>
+<header><img src="docs/img/header.svg" alt="CharAI: draw any person as data, direct them with a script." width="1280" height="360">
+<h1>CharAI: 2D character animation engine and AI agent skill</h1></header>
+<p>CharAI is an open-source 2D character animation engine and agent skill. An AI agent (or a person) draws any human as a small data file and directs it with a short <code>.char</code> script; the engine supplies skeleton, motion, physics, moods, lip sync and speech, two-character contact and props. Characters only: the host supplies the scenery. Side view only in this release.</p>
+<nav><a href="https://github.com/riponcm/CharAI/">GitHub</a><a href="gallery/index.html">Gallery</a><a href="https://github.com/riponcm/CharAI/blob/main/SKILL.md">Agent skill</a><a href="https://github.com/riponcm/CharAI/blob/main/docs/EVIDENCE.md">Evidence</a><a href="https://github.com/riponcm/CharAI/blob/main/docs/KNOWN-ISSUES.md">Known issues</a><a href="https://github.com/riponcm/CharAI/blob/main/llms.txt">llms.txt</a></nav>
+<div class="clips">
+<a href="media/cast-lineup.mp4"><img src="media/cast-lineup.gif" alt="Six people in a line-up" loading="lazy"></a>
+<a href="media/toddler-and-captain.mp4"><img src="media/toddler-and-captain.gif" alt="A toddler and a captain" loading="lazy"></a>
+<a href="media/together.mp4"><img src="media/together.gif" alt="A hug, a handover, a scuffle" loading="lazy"></a>
+</div>
+<h2>Key facts</h2>
+<ul>
+<li>Apache 2.0. No runtime dependencies: one script file, <code>dist/char.js</code>, and a <code>&lt;char-stage&gt;</code> web component.</li>
+<li>Every frame is a pure function of time (<code>seek(t)</code>), the contract HyperFrames, Remotion and GSAP timelines use. Snippets for those three are untested; two plain-HTML host examples are tested.</li>
+<li>Exports MP4, transparent WebM and ProRes, PNG sequence and animated SVG.</li>
+<li>Built with Claude Code. Only Claude models have been tried.</li>
+<li>Measured costs, including a test it lost, are in the <a href="https://github.com/riponcm/CharAI/blob/main/docs/EVIDENCE.md">evidence</a>.</li>
+</ul>
+<h2>Documents</h2>
+<ul>
+<li><a href="https://github.com/riponcm/CharAI/blob/main/SKILL.md">SKILL.md</a></li>
+<li><a href="https://github.com/riponcm/CharAI/blob/main/docs/CHARACTER.md">docs/CHARACTER.md</a></li>
+<li><a href="https://github.com/riponcm/CharAI/blob/main/docs/AUTHORING.md">docs/AUTHORING.md</a></li>
+<li><a href="https://github.com/riponcm/CharAI/blob/main/docs/ACTIONS.md">docs/ACTIONS.md</a></li>
+<li><a href="https://github.com/riponcm/CharAI/blob/main/docs/HOSTS.md">docs/HOSTS.md</a></li>
+<li><a href="https://github.com/riponcm/CharAI/blob/main/docs/EVIDENCE.md">docs/EVIDENCE.md</a></li>
+<li><a href="https://github.com/riponcm/CharAI/blob/main/docs/KNOWN-ISSUES.md">docs/KNOWN-ISSUES.md</a></li>
+</ul>
+<h2>Frequently asked questions</h2>
+<details><summary>What is CharAI?</summary><p>CharAI is an open-source 2D character animation engine and agent skill. An AI agent or a person draws any human as a small skin data file and directs it with a short <code>.char</code> script; the engine supplies skeleton, motion, physics, moods, lip sync, two-character contact and props.</p></details>
+<details><summary>How do I animate a character with Claude Code?</summary><p>Put this repository in <code>.claude/skills/charai/</code> and ask Claude Code to draw a character or write a film. It reads <code>SKILL.md</code>, follows the document for the job, then loops: write, run the check (<code>node tools/check.cjs films/x</code>), look at the picture, fix.</p></details>
+<details><summary>Does it work with HyperFrames, Remotion or GSAP?</summary><p>The frame is a pure function of time (<code>seek(t)</code>), the contract those timelines use, and <code>docs/HOSTS.md</code> has a snippet for each. Those three snippets are untested; HyperFrames is "snippet provided, not yet tested". Two plain-HTML host examples in <code>examples/</code> are tested.</p></details>
+<details><summary>How does it compare with Lemo-Opuscar?</summary><p>Lemo-Opuscar is a style library for code-made films. On two 30 s episodes on Sonnet, CharAI used 425,057 tokens against 667,202; on a 30 s silhouette film on Opus it lost, at 391,611 against 318,987, and looked worse. These are single runs, and CharAI is meant to complement style libraries as their character layer.</p></details>
+<details><summary>Which models built it?</summary><p>It was built with Claude Code. Claude Fable 5.2 was architect and reviewer, Claude Opus 5.5 wrote the engine code, and Claude Sonnet wrote characters, actions, scenes, tools and packaging from the documents alone. Only Claude models have been tried.</p></details>
+<details><summary>What does it cost in tokens?</summary><p>Claude Sonnet wrote a character in about 41,800 tokens, an action in about 8,200, and a 20 s two-character scene in 98,844. Each figure is one run; see <code>docs/EVIDENCE.md</code>.</p></details>
+<details><summary>What can't it do?</summary><p>Side view only (no three-quarter or front view), flat cartoon styles, no scenery, no 3D, simple hands, and spring physics for hair and cloth rather than simulation. Lip sync matches the speech but is not polished. Known faults are in <code>docs/KNOWN-ISSUES.md</code>.</p></details>
+<details><summary>Does it need an artist or motion capture?</summary><p>No. The agent writes a skin as numbers plus a few SVG paths, and motion comes from the engine's actions, which are a few key poses each. There is no library of ready-made characters; a few worked examples are in <code>skins/</code>.</p></details>
+<details><summary>What licence is it under?</summary><p>Apache License 2.0; see <code>LICENSE</code> and <code>NOTICE</code>. It has no runtime dependencies.</p></details>
+<details><summary>How do I add a new action?</summary><p>Write a small file of key poses in body terms, register it in <code>CharActions</code>, and check it with <code>node tools/actioncheck.cjs actions/x.js</code>. See it with <code>node tools/action.cjs x out.png</code>. The format is in <code>docs/ACTIONS.md</code>.</p></details>
+<footer>Apache License 2.0. <a href="https://github.com/riponcm/CharAI/">Source on GitHub</a>.</footer>
+</main></body></html>

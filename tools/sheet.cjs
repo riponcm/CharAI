@@ -1,5 +1,5 @@
 // One contact-sheet PNG of evenly spaced frames with timestamps, so a review costs one image.
-// Usage: node tools/sheet.cjs <film dir> <out.png> [--n=12] [--cols=4] [--w=400] [--from=s] [--to=s]
+// Usage: node tools/sheet.cjs <film dir | file.char> <out.png> [--n=12] [--cols=4] [--w=400] [--from=s] [--to=s]
 // --from/--to (seconds) take the frames from that part of the film only (a close strip of one action).
 // Builds <film>/index.html first (like check.cjs), then captures every frame in one browser session.
 const fs = require('node:fs'), path = require('node:path'), url = require('node:url');
@@ -11,7 +11,7 @@ const { launch } = require('./render.cjs');
   const pos = args.filter(a => !a.startsWith('--'));
   const opt = Object.fromEntries(args.filter(a => a.startsWith('--')).map(a => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return [m[1], m[2] ?? true]; }));
   const [dir, out] = pos;
-  if (!dir || !out) { console.error('usage: node tools/sheet.cjs <film dir> <out.png> [--n=12] [--cols=4] [--w=400]'); process.exit(2); }
+  if (!dir || !out) { console.error('usage: node tools/sheet.cjs <film dir | file.char> <out.png> [--n=12] [--cols=4] [--w=400]'); process.exit(2); }
   const n = +(opt.n || 12), cols = +(opt.cols || 4), tw = +(opt.w || 400), th = Math.round(tw * 9 / 16);
   const b = build(dir);
   const browser = await launch();

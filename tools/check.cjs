@@ -1,5 +1,5 @@
-// Check a film folder and build its index.html.
-// Usage: node tools/check.cjs <film dir> [--timeline] [--standin]
+// Check a film folder (or a single .char file) and build its index.html (<name>.html for a file).
+// Usage: node tools/check.cjs <film dir | file.char> [--timeline] [--standin]
 //   Prints script diagnostics and motion problems, each with the line to change and what to write.
 //   --timeline also prints every statement with its resolved start and end time.
 //   Exit code 1 when there is any error.
@@ -44,7 +44,9 @@ function libFile(filmDir, kind, name) {
 // Write <film>/index.html from film.html with the script text and exactly the library files it uses.
 function build(filmDir) {
   filmDir = path.resolve(filmDir);
-  const scriptFile = path.join(filmDir, 'film.char');
+  let scriptFile = path.join(filmDir, 'film.char'), page = 'index.html';
+  // a path to any .char file works too: its folder is the film folder and the page is <name>.html
+  if (/[.]char$/i.test(filmDir) && fs.existsSync(filmDir) && fs.statSync(filmDir).isFile()) { scriptFile = filmDir; filmDir = path.dirname(filmDir); page = path.basename(scriptFile).replace(/[.]char$/i, '.html'); }
   if (!fs.existsSync(scriptFile)) throw Error(`no film.char in ${filmDir}. A film is a folder with a film.char script.`);
   const text = fs.readFileSync(scriptFile, 'utf8');
   const { CharScript } = loadEngine(filmDir);
@@ -72,7 +74,7 @@ function build(filmDir) {
     .replace('<title>__TITLE__</title>', `<title>${esc(P.film.title || path.basename(filmDir))}</title>`)
     .replace('<script type="text/plain" id="film-script">__SCRIPT__</script>', () => `<script type="text/plain" id="film-script">${text.replace(/<\/script/gi, '<\\/script')}</script>`)
     .replace('<!-- LIBS -->', () => `<script>window.CharTracks = ${JSON.stringify(tracks).replace(/</g, '\\u003c')};</script>\n` + files.map(f => `<script src="${rel(f)}"></script>`).join('\n'));
-  const out = path.join(filmDir, 'index.html');
+  const out = path.join(filmDir, page);
   fs.writeFileSync(out, html);
   return { out, text, parsed: P };
 }
@@ -203,7 +205,7 @@ module.exports = { ROOT, loadEngine, build, check, libFile };
 if (require.main === module) {
   const args = process.argv.slice(2);
   const dir = args.find(a => !a.startsWith('--'));
-  if (!dir) { console.error('usage: node tools/check.cjs <film dir> [--timeline] [--standin]'); process.exit(2); }
+  if (!dir) { console.error('usage: node tools/check.cjs <film dir | file.char> [--timeline] [--standin]'); process.exit(2); }
   try {
     const r = check(dir, { timeline: args.includes('--timeline'), standin: args.includes('--standin') });
     console.log(r.text);

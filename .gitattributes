@@ -1,0 +1,2 @@
+# .char scripts are plain text with LF line endings and count as source code on GitHub
+*.char text eol=lf linguist-detectable linguist-language=Text
